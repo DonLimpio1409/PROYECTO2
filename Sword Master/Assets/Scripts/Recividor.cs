@@ -20,8 +20,8 @@ public class Recividor : MonoBehaviour
 
     void Update()
     {
-        //if (udp.Available > 0)
-        //{
+        if (udp.Available > 0)
+        {
             byte[] data = udp.Receive(ref remoteEndPoint);
             string mensaje = Encoding.UTF8.GetString(data);
 
@@ -29,7 +29,7 @@ public class Recividor : MonoBehaviour
 
             MotionData m = JsonUtility.FromJson<MotionData>(mensaje);
             ultimaRotacion = new Quaternion(m.x, m.y, m.z, m.w);
-        //}
+        }
     }
 
     [System.Serializable]
