@@ -17,7 +17,7 @@ public class MoverEspada : MonoBehaviour
     {
         if (recividor != null)
         {
-            transform.rotation = new Quaternion(-recividor.ultimaRotacion.x, -recividor.ultimaRotacion.y, recividor.ultimaRotacion.z, recividor.ultimaRotacion.w);
+            transform.rotation = new Quaternion(-recividor.ultimaRotacion.x, -recividor.ultimaRotacion.z, -recividor.ultimaRotacion.y, recividor.ultimaRotacion.w);
         }
     }
 }
