@@ -9,12 +9,12 @@ public class Recividor : MonoBehaviour
     public UdpClient udp;
     public IPEndPoint remoteEndPoint;
 
+    public Vector3 ultimaPosicion { get; private set; }
     public Quaternion ultimaRotacion { get; private set; }
-    public Transform posicion { get; private set; }
 
     void Start()
     {
-        udp = new UdpClient(5055);
+        udp = new UdpClient(443);
         remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
     }
 
@@ -25,18 +25,17 @@ public class Recividor : MonoBehaviour
             byte[] data = udp.Receive(ref remoteEndPoint);
             string mensaje = Encoding.UTF8.GetString(data);
 
-            Debug.Log("" + mensaje);
-
             MotionData m = JsonUtility.FromJson<MotionData>(mensaje);
-            ultimaRotacion = new Quaternion(m.x, m.y, m.z, m.w);
+
+            ultimaPosicion = new Vector3(m.px, m.py, m.pz);
+            ultimaRotacion = new Quaternion(m.qx, m.qy, m.qz, m.qw);
         }
     }
 
     [System.Serializable]
-
     public class MotionData
     {
-        public float x, y, z, w;
-        public float ax, ay, az;
+        public float px, py, pz;
+        public float qx, qy, qz, qw;
     }
 }

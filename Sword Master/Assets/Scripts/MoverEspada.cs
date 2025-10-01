@@ -5,19 +5,24 @@ using UnityEngine;
 public class MoverEspada : MonoBehaviour
 {
     private Recividor recividor;
+    private Vector3 velocidad; // para integrar la aceleración
+    private Vector3 posicion;  // posición calculada
 
-    // Start is called before the first frame update 
+    public float sensibilidad = 1f; // ajusta para escalar el movimiento
+    public float suavizado = 0.9f;  // factor de amortiguación para evitar que se dispare
+
     void Start()
     {
         recividor = FindObjectOfType<Recividor>();
+        posicion = transform.position;
     }
 
-    // Update is called once per frame 
     void Update()
+{
+    if (recividor != null)
     {
-        if (recividor != null)
-        {
-            transform.rotation = new Quaternion(-recividor.ultimaRotacion.x, -recividor.ultimaRotacion.z, -recividor.ultimaRotacion.y, recividor.ultimaRotacion.w);
-        }
+        transform.SetPositionAndRotation(recividor.ultimaPosicion, recividor.ultimaRotacion);
     }
 }
+}
+
