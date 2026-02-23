@@ -1,41 +1,55 @@
+using UnityEngine;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using UnityEngine;
-using System;
-using System.Net;
+using System.Threading;
 
 public class Recividor : MonoBehaviour
 {
-    public UdpClient udp;
-    public IPEndPoint remoteEndPoint;
+    public int puerto = 5005;
 
-    public Vector3 ultimaPosicion { get; private set; }
-    public Quaternion ultimaRotacion { get; private set; }
+    UdpClient udp;
+    Thread hilo;
+
+    public Vector3 rotacionRecibida;
+    public bool defendiendo;
 
     void Start()
     {
-        udp = new UdpClient(443);
-        remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+        udp = new UdpClient(puerto);
+
+        hilo = new Thread(new ThreadStart(RecibirDatos));
+        hilo.IsBackground = true;
+        hilo.Start();
     }
 
-    void Update()
+    void RecibirDatos()
     {
-        if (udp.Available > 0)
+        IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, puerto);
+
+        while (true)
         {
-            byte[] data = udp.Receive(ref remoteEndPoint);
-            string mensaje = Encoding.UTF8.GetString(data);
+            byte[] datos = udp.Receive(ref anyIP);
+            string mensaje = Encoding.UTF8.GetString(datos);
 
-            MotionData m = JsonUtility.FromJson<MotionData>(mensaje);
+            string[] valores = mensaje.Split(',');
 
-            ultimaPosicion = new Vector3(m.px, m.py, m.pz);
-            ultimaRotacion = new Quaternion(m.qx, m.qy, m.qz, m.qw);
+            rotacionRecibida = new Vector3(
+                float.Parse(valores[0]),
+                float.Parse(valores[1]),
+                float.Parse(valores[2])
+            );
+
+            defendiendo = bool.Parse(valores[3]);
         }
     }
 
-    [System.Serializable]
-    public class MotionData
+    void OnApplicationQuit()
     {
-        public float px, py, pz;
-        public float qx, qy, qz, qw;
+        if (hilo != null)
+            hilo.Abort();
+
+        if (udp != null)
+            udp.Close();
     }
 }
