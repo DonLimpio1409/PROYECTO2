@@ -5,8 +5,8 @@ using System.Text;
 
 public class Informador : MonoBehaviour
 {
-    public string ipPC = "192.168.1.1";
-    public int puerto = 5005;
+    public string ipPC = "192.168.1.135";
+    public int puerto = 455;
 
     public Button botonDefensa;
 
