@@ -11,14 +11,15 @@ public class Recividor : MonoBehaviour
     UdpClient udp;
     Thread hilo;
 
-    public Vector3 rotacionRecibida;
+    public Quaternion rotacionRecibida;
+    public Vector3 aceleracionRecibida;
     public bool defendiendo;
 
     void Start()
     {
         udp = new UdpClient(puerto);
 
-        hilo = new Thread(new ThreadStart(RecibirDatos));
+        hilo = new Thread(RecibirDatos);
         hilo.IsBackground = true;
         hilo.Start();
     }
@@ -31,25 +32,22 @@ public class Recividor : MonoBehaviour
         {
             byte[] datos = udp.Receive(ref anyIP);
             string mensaje = Encoding.UTF8.GetString(datos);
+            string[] v = mensaje.Split(',');
 
-            string[] valores = mensaje.Split(',');
-
-            rotacionRecibida = new Vector3(
-                float.Parse(valores[0]),
-                float.Parse(valores[1]),
-                float.Parse(valores[2])
+            rotacionRecibida = new Quaternion(
+                float.Parse(v[0]),
+                float.Parse(v[1]),
+                float.Parse(v[2]),
+                float.Parse(v[3])
             );
 
-            defendiendo = bool.Parse(valores[3]);
+            aceleracionRecibida = new Vector3(
+                float.Parse(v[4]),
+                float.Parse(v[5]),
+                float.Parse(v[6])
+            );
+
+            defendiendo = bool.Parse(v[7]);
         }
-    }
-
-    void OnApplicationQuit()
-    {
-        if (hilo != null)
-            hilo.Abort();
-
-        if (udp != null)
-            udp.Close();
     }
 }

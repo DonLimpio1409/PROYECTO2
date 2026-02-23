@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -11,8 +10,8 @@ public class Informador : MonoBehaviour
 
     public Button botonDefensa;
 
-    private UdpClient udp;
-    private bool defendiendo = false;
+    UdpClient udp;
+    bool defendiendo = false;
 
     void Start()
     {
@@ -21,13 +20,11 @@ public class Informador : MonoBehaviour
         if (SystemInfo.supportsGyroscope)
             Input.gyro.enabled = true;
 
-        botonDefensa.onClick.AddListener(ActivarDefensa);
-    }
-
-    void ActivarDefensa()
-    {
-        defendiendo = true;
-        Invoke("DesactivarDefensa", 0.5f); // defensa medio segundo
+        botonDefensa.onClick.AddListener(() =>
+        {
+            defendiendo = true;
+            Invoke(nameof(DesactivarDefensa), 0.3f);
+        });
     }
 
     void DesactivarDefensa()
@@ -37,9 +34,13 @@ public class Informador : MonoBehaviour
 
     void Update()
     {
-        Vector3 rotacion = Input.gyro.rotationRateUnbiased;
+        Quaternion rot = Input.gyro.attitude;
+        Vector3 acc = Input.acceleration;
 
-        string mensaje = rotacion.x + "," + rotacion.y + "," + rotacion.z + "," + defendiendo;
+        string mensaje =
+            rot.x + "," + rot.y + "," + rot.z + "," + rot.w + "," +
+            acc.x + "," + acc.y + "," + acc.z + "," +
+            defendiendo;
 
         byte[] datos = Encoding.UTF8.GetBytes(mensaje);
         udp.Send(datos, datos.Length, ipPC, puerto);
