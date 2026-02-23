@@ -6,7 +6,7 @@ using System.Threading;
 
 public class Recividor : MonoBehaviour
 {
-    public int puerto = 5005;
+    public int puerto = 455;
 
     UdpClient udp;
     Thread hilo;
