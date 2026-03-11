@@ -31,12 +31,7 @@ public class ControlEspada : MonoBehaviour
         else
         {
             // ROTACIÓN
-            Quaternion rotMovil = new Quaternion(
-                -recividor.rotacionRecibida.x,
-                -recividor.rotacionRecibida.y,
-                 recividor.rotacionRecibida.z,
-                 recividor.rotacionRecibida.w
-            );
+            Quaternion rotMovil = recividor.rotacionRecibida;
 
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,

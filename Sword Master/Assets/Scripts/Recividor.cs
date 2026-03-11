@@ -3,10 +3,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Globalization;
 
 public class Recividor : MonoBehaviour
 {
-    public int puerto = 455;
+    public int puerto = 161;
 
     UdpClient udp;
     Thread hilo;
@@ -35,17 +36,19 @@ public class Recividor : MonoBehaviour
             string[] v = mensaje.Split(',');
 
             rotacionRecibida = new Quaternion(
-                float.Parse(v[0]),
-                float.Parse(v[1]),
-                float.Parse(v[2]),
-                float.Parse(v[3])
+                float.Parse(v[0], CultureInfo.InvariantCulture),
+                float.Parse(v[1], CultureInfo.InvariantCulture),
+                float.Parse(v[2], CultureInfo.InvariantCulture),
+                float.Parse(v[3], CultureInfo.InvariantCulture)
             );
+            Debug.Log(rotacionRecibida);
 
             aceleracionRecibida = new Vector3(
-                float.Parse(v[4]),
-                float.Parse(v[5]),
-                float.Parse(v[6])
+                float.Parse(v[4], CultureInfo.InvariantCulture),
+                float.Parse(v[5], CultureInfo.InvariantCulture),
+                float.Parse(v[6], CultureInfo.InvariantCulture)
             );
+            Debug.Log(aceleracionRecibida);
 
             defendiendo = bool.Parse(v[7]);
         }
