@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9c0ea6b8e84944f81b804c1f73b544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Informador
-  ipPC: 192.168.1.1
-  puerto: 5005
+  ipPC: 192.168.1.136
+  puerto: 161
   botonDefensa: {fileID: 1667214071}
 --- !u!4 &491228647
 Transform:
