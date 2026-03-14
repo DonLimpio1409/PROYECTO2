@@ -5,52 +5,52 @@ using System.Text;
 using System.Threading;
 using System.Globalization;
 
-public class Recividor : MonoBehaviour
+public class Receiver : MonoBehaviour
 {
-    public int puerto = 161;
+    public int port = 161;
 
     UdpClient udp;
     Thread hilo;
 
-    public Quaternion rotacionRecibida;
-    public Vector3 aceleracionRecibida;
-    public bool defendiendo;
+    public Quaternion rotationReceived;
+    public Vector3 acelerationReceived;
+    public bool defending;
 
     void Start()
     {
-        udp = new UdpClient(puerto);
+        udp = new UdpClient(port);
 
-        hilo = new Thread(RecibirDatos);
+        hilo = new Thread(RecivedData);
         hilo.IsBackground = true;
         hilo.Start();
     }
 
-    void RecibirDatos()
+    void RecivedData()
     {
-        IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, puerto);
+        IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, port);
 
         while (true)
         {
-            byte[] datos = udp.Receive(ref anyIP);
-            string mensaje = Encoding.UTF8.GetString(datos);
-            string[] v = mensaje.Split(',');
+            byte[] data = udp.Receive(ref anyIP);
+            string message = Encoding.UTF8.GetString(data);
+            string[] v = message.Split(',');
 
-            rotacionRecibida = new Quaternion(
+            rotationReceived = new Quaternion(
                 float.Parse(v[0], CultureInfo.InvariantCulture),
                 float.Parse(v[1], CultureInfo.InvariantCulture),
                 float.Parse(v[2], CultureInfo.InvariantCulture),
                 float.Parse(v[3], CultureInfo.InvariantCulture)
             );
-            Debug.Log(rotacionRecibida);
+            Debug.Log(rotationReceived);
 
-            aceleracionRecibida = new Vector3(
+            acelerationReceived = new Vector3(
                 float.Parse(v[4], CultureInfo.InvariantCulture),
                 float.Parse(v[5], CultureInfo.InvariantCulture),
                 float.Parse(v[6], CultureInfo.InvariantCulture)
             );
-            Debug.Log(aceleracionRecibida);
+            Debug.Log(acelerationReceived);
 
-            defendiendo = bool.Parse(v[7]);
+            defending = bool.Parse(v[7]);
         }
     }
 }
