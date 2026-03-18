@@ -22,7 +22,7 @@ public class Patrol : TemplateStateMachine
     {
         base.UpdateLogic();
         _fsm.goWalk = false;
-        //GoIdle();
+        GoIdle();
         if (_fsm.goWalk)
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager) stateMachineFlow).idleState);
