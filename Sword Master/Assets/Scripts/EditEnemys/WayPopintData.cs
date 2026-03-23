@@ -9,17 +9,19 @@ public class WayPopintData : ScriptableObject
     public struct WayPoint 
     {
         public Vector3 wayPointPosition;
-        public WayPoint(Vector3 _wayPointPosition)
+        public float waitTime;
+        public WayPoint(Vector3 _wayPointPosition, float _waitTime)
         {
             wayPointPosition = _wayPointPosition;
+            waitTime = _waitTime;
         }
     }
 
     public List<WayPoint> wayPointList = new List<WayPoint>();
 
-    public void AddWayPoint(Vector3 _wayPointPosition)
+    public void AddWayPoint(Vector3 _wayPointPosition, float _waitTime)
     {
-        WayPoint newWayPoint = new WayPoint(_wayPointPosition);
+        WayPoint newWayPoint = new WayPoint(_wayPointPosition, _waitTime);
         wayPointList.Add(newWayPoint);
     }
 }
