@@ -14,7 +14,8 @@ public class Patrol : TemplateStateMachine
     public override void Enter()
     {
         base.Enter();  //Llama al m�todo de entrada de mi clase base
-        _fsm.rend.material = _fsm.materialEstados[1];
+        //_fsm.rend.material = _fsm.materialEstados[1];
+        //Activar animacion
         IniciateWayPoints();
     }
 
@@ -49,10 +50,9 @@ public class Patrol : TemplateStateMachine
     public void IniciateWayPoints()
     {
         _fsm.waypointData.wayPointList.Clear();
-        _fsm.waypointData.AddWayPoint(new Vector3(24.14f, -0.726f, -20.16f));
-        _fsm.waypointData.AddWayPoint(new Vector3(25.98f, -0.726f, -0.08f));
-        _fsm.waypointData.AddWayPoint(new Vector3(14.28f, -0.726f, -19.92f));
-        _fsm.waypointData.AddWayPoint(new Vector3(3.83f, -0.726f, -18.13f));
+        _fsm.waypointData.AddWayPoint(new Vector3(-55.62f, 2.99f, -121.01f), 3f);
+        _fsm.waypointData.AddWayPoint(new Vector3(-55.62f, 2.824f, -112.9f), 3f);
+        _fsm.waypointData.AddWayPoint(new Vector3(-62.58f, 2.82f, -121.32f), 3f);
 
         target = _fsm.waypointData.wayPointList[currentWayPointIndex];
     }

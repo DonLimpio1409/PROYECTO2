@@ -27,11 +27,5 @@ public class FSMEnemysManager : StateMachineFlow
     public bool goWalk;
     public WayPopintData waypointData;
     public float speed = 3;
-
-    public IEnumerator WaitForPatrol()
-    {
-        yield return new WaitForSeconds(3f);
-        goWalk = true;
-    }
 }
 

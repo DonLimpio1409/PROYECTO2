@@ -22,8 +22,7 @@ public class Idle : TemplateStateMachine
     public override void UpdateLogic()
     {
         base.UpdateLogic();  
-        _fsm.goWalk = false;
-        _fsm.StartCoroutine(_fsm.WaitForPatrol());
+        _fsm.goWalk = Input.GetKeyDown(KeyCode.Space);
         if(_fsm.goWalk)
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).patrolState);
