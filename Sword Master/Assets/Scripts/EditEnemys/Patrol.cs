@@ -13,20 +13,19 @@ public class Patrol : TemplateStateMachine
 
     public override void Enter()
     {
-        base.Enter();  //Llama al m�todo de entrada de mi clase base
-        //_fsm.rend.material = _fsm.materialEstados[1];
-        //Activar animacion
+        base.Enter();  
         IniciateWayPoints();
+        _fsm.stateNameT.text = "Patrol";
+        _fsm.goIdle = false;//Reafirmamos que es False para que no se vaya inmediatamente cuando entra al estado.
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        _fsm.goWalk = false;
-        GoIdle();
-        if (_fsm.goWalk)
+        if (_fsm.goIdle)
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager) stateMachineFlow).idleState);
+            _fsm.goIdle = false;
         }
     }
 
@@ -46,38 +45,30 @@ public class Patrol : TemplateStateMachine
     }
 
     WayPopintData.WayPoint target;
-    int currentWayPointIndex = 0;
     public void IniciateWayPoints()
     {
         _fsm.waypointData.wayPointList.Clear();
-        _fsm.waypointData.AddWayPoint(new Vector3(-55.62f, 2.99f, -121.01f), 3f);
-        _fsm.waypointData.AddWayPoint(new Vector3(-55.62f, 2.824f, -112.9f), 3f);
-        _fsm.waypointData.AddWayPoint(new Vector3(-62.58f, 2.82f, -121.32f), 3f);
+        _fsm.waypointData.AddWayPoint(new Vector3(_fsm.waypoint1.transform.position.x, _fsm.waypoint1.transform.position.y, _fsm.waypoint1.transform.position.z), 3f);
+        _fsm.waypointData.AddWayPoint(new Vector3(_fsm.waypoint2.transform.position.x, _fsm.waypoint2.transform.position.y, _fsm.waypoint2.transform.position.z), 3f);
+        _fsm.waypointData.AddWayPoint(new Vector3(_fsm.waypoint3.transform.position.x, _fsm.waypoint3.transform.position.y, _fsm.waypoint3.transform.position.z), 3f);
 
-        target = _fsm.waypointData.wayPointList[currentWayPointIndex];
+        target = _fsm.waypointData.wayPointList[_fsm.currentWayPointIndex];
     }
 
     public void GetDestination()
     {
-        Vector2 size = _fsm.transform.localScale;
-        float radious = size.magnitude / 2f;
-        if(Vector3.Distance(_fsm.transform.position, target.wayPointPosition) < radious)
+        if(_fsm.changeWayPoint)
         {
-            currentWayPointIndex = (currentWayPointIndex + 1) % _fsm.waypointData.wayPointList.Count;
-            target = _fsm.waypointData.wayPointList[currentWayPointIndex];
+            //Sumo uno al indice solo si es menor que el count, de lo contrario pues a 0
+            _fsm.currentWayPointIndex = (_fsm.currentWayPointIndex + 1) % _fsm.waypointData.wayPointList.Count;
+
+            target = _fsm.waypointData.wayPointList[_fsm.currentWayPointIndex];
+            _fsm.changeWayPoint = false;
         }
     }
 
     public void MoveToPosition()
     {
         _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, target.wayPointPosition, _fsm.speed * Time.deltaTime);
-    }
-
-    public void GoIdle()
-    {
-        if(_fsm.transform.position == target.wayPointPosition)
-        {
-            _fsm.goWalk = true;
-        }
     }
 }

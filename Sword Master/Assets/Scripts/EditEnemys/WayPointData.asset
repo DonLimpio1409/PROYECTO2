@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WayPointData
   m_EditorClassIdentifier: 
   wayPointList:
-  - wayPointPosition: {x: -55.62, y: 2.99, z: -121.01}
+  - wayPointPosition: {x: -37.58395, y: 57.229996, z: -119.86446}
     waitTime: 3
-  - wayPointPosition: {x: -55.62, y: 2.824, z: -112.9}
+  - wayPointPosition: {x: -31.87, y: 57.229996, z: -115.16}
     waitTime: 3
-  - wayPointPosition: {x: -62.58, y: 2.82, z: -121.32}
+  - wayPointPosition: {x: -36.93395, y: 57.229996, z: -110.75447}
     waitTime: 3

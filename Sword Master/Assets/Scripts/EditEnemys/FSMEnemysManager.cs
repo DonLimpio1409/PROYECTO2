@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class FSMEnemysManager : StateMachineFlow
 {
+    //Estados
     public Idle idleState;
     public Patrol patrolState;
     private void Awake()
     {
+        //Declaracion de estados
         idleState = new Idle(this);
         patrolState = new Patrol(this);
     }
@@ -18,14 +22,29 @@ public class FSMEnemysManager : StateMachineFlow
         _stateMachine = patrolState;
     }
 
-    //Elements
+    //Elementos para los estados
     public List<Material> materialEstados = new List<Material>();
     public Renderer rend;
     public Rigidbody rb = new Rigidbody();
+    public TextMeshProUGUI stateNameT;
 
-
-    public bool goWalk;
+    //Patrol
+    public bool goIdle;
+    public bool changeWayPoint;
     public WayPopintData waypointData;
     public float speed = 3;
+    public int currentWayPointIndex = 0;
+    public GameObject waypoint1;
+    public GameObject waypoint2;
+    public GameObject waypoint3;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "WayPoint")
+        {
+            changeWayPoint = true;
+            goIdle = true;
+        }
+    }
 }
 
