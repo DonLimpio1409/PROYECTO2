@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 60f75aec1b57536498476d458ce4e48d
+guid: 486a2e70bde8e2d4ba951b2152e690c7
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: UV1
-    second: {fileID: 2100000, guid: 0aab11142ea92d64ba3fe14eb4de89a8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: UV2
-    second: {fileID: 2100000, guid: eddb4d64e7c0ab04aa26a3cf9140e704, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: UV3
-    second: {fileID: 2100000, guid: 88264010690a6054899175b1ee635095, type: 2}
+      name: UvCalabaza
+    second: {fileID: 2100000, guid: 003a7e2dfa8127d4eaa0f9857d252883, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
