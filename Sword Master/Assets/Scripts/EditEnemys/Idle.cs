@@ -13,19 +13,32 @@ public class Idle : TemplateStateMachine
         _fsm = _stateMachineFlow;
     }
 
+    WayPopintData.WayPoint target;
     public override void Enter()
     {
         base.Enter();  //Llama al m�todo de entrada de mi clase base
-        _fsm.rend.material = _fsm.materialEstados[0];
+        _fsm.stateNameT.text = "Idle";
+
+        target = _fsm.waypointData.wayPointList[_fsm.currentWayPointIndex];
     }
 
     public override void UpdateLogic()
     {
-        base.UpdateLogic();  
-        _fsm.goWalk = Input.GetKeyDown(KeyCode.Space);
-        if(_fsm.goWalk)
+        base.UpdateLogic();
+        WaitTime();
+        if(_fsm.goIdle)
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).patrolState);
+        }
+    }
+
+    public void WaitTime()
+    {
+        target.waitTime -= Time.deltaTime;
+
+        if (target.waitTime < 0)
+        {
+            _fsm.goIdle = true;
         }
     }
 }
