@@ -25,6 +25,7 @@ public class Idle : TemplateStateMachine
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        Detected();
         WaitTime();
         if(_fsm.goIdle)
         {
@@ -39,6 +40,17 @@ public class Idle : TemplateStateMachine
         if (target.waitTime < 0)
         {
             _fsm.goIdle = true;
+        }
+    }
+
+    public void Detected()
+    {
+        _fsm.rayDetector = new Ray(_fsm.transform.position, _fsm.transform.forward);
+        Debug.DrawRay(_fsm.transform.position, _fsm.transform.forward * _fsm.rayLength, Color.red);
+
+        if (Physics.Raycast(_fsm.rayDetector, out _fsm.hit, _fsm.rayLength) && _fsm.hit.collider.gameObject.tag == "Player")
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }
     }
 }
