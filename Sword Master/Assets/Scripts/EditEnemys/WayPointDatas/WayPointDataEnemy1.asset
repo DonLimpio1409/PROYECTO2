@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3077471b7554dc41b1b4b953f7d312d, type: 3}
-  m_Name: WayPointData
+  m_Name: WayPointDataEnemy1
   m_EditorClassIdentifier: 
   wayPointList:
-  - wayPointPosition: {x: -37.58395, y: 57.229996, z: -119.86446}
-    waitTime: 3
-  - wayPointPosition: {x: -31.87, y: 57.229996, z: -115.16}
-    waitTime: 3
-  - wayPointPosition: {x: -36.93395, y: 57.229996, z: -110.75447}
-    waitTime: 3
+  - wayPointPosition: {x: -56.31395, y: 0.6899965, z: -120.21447}
+    waitTime: 5
+  - wayPointPosition: {x: -51.413948, y: 0.6899965, z: -112.61446}
+    waitTime: 5
+  - wayPointPosition: {x: -60.20395, y: -0.2000029, z: -110.38447}
+    waitTime: 5
