@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &14410517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.318005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -114.33938
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70643723
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7077758
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.108
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
+      propertyPath: m_Name
+      value: Pumpkin
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b64a4ed031165ec4484ace9f97758588, type: 3}
 --- !u!1 &167929423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,9 +1874,85 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8550740238724834239, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -7709657626137806751, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Carrot.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -7522941624232496258, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Rake
+      objectReference: {fileID: 0}
+    - target: {fileID: -7364869432772210690, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Strawberry
+      objectReference: {fileID: 0}
+    - target: {fileID: -5890601359425479210, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Cherries
+      objectReference: {fileID: 0}
+    - target: {fileID: -5854552930166847600, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Cob.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -5194903282760862649, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Tomato.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -4555346106338151867, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Onion.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -3033438399561833113, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: DoorPlaceholder
+      objectReference: {fileID: 0}
+    - target: {fileID: -2607059423449661689, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: -777007689181064142, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: HousePlaceholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 65411755952733020, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Strawberry.01
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
       propertyPath: m_Name
-      value: Escenario
+      value: Patch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931639261654505970, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Tomato
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011255895063979915, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Cob.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207261794185795565, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Cob
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387058925754926068, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Shovel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556549236202929456, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Onion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956047819431569836, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Strawberry.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498149339716518431, guid: 60f75aec1b57536498476d458ce4e48d, type: 3}
+      propertyPath: m_Name
+      value: Carrot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2271,3 +2404,4 @@ SceneRoots:
   - {fileID: 352087375}
   - {fileID: 1114849278}
   - {fileID: 1629558968}
+  - {fileID: 14410517}
