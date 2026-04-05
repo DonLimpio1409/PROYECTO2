@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: b30d6ef2c71664e40b84f84d58498b1f
+guid: 9088b6d69d7132542bd140a991099a60
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv3
+    second: {fileID: 2100000, guid: de25f4f163948b9408a33f23f5f74424, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
