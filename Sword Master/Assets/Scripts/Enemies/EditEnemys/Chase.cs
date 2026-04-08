@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 
-public class Combat : TemplateStateMachine
+public class Chase : TemplateStateMachineEnemies
 {
     private FSMEnemysManager _fsm;
 
-    public Combat(FSMEnemysManager _stateMachineFlow) : base("Combat", (StateMachineFlow)_stateMachineFlow)
+    public Chase(FSMEnemysManager _stateMachineFlow) : base("Chase", (StateMachineFlowEnemies)_stateMachineFlow)
     {
         _fsm = _stateMachineFlow;
     }
 
     public override void Enter()
     {
-        base.Enter();  //Llama al m�todo de entrada de mi clase base
-        //_fsm.rend.material = _fsm.materialEstados[3];
+        base.Enter();
+        //_fsm.rend.material = _fsm.materialEstados[2];
         //Activar animacion
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        //Lógica de combate
+        //Lógica de persecución
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        //Movimiento de combate
+        //Movimiento de persecución
     }
 }

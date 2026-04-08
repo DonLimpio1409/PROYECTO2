@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemplateStateMachine
+public class TemplateStateMachineEnemies
 {
     public string name;
-    protected StateMachineFlow stateMachineFlow;
-    public TemplateStateMachine(string name, StateMachineFlow _stateMachineFlow)
+    protected StateMachineFlowEnemies stateMachineFlow;
+    public TemplateStateMachineEnemies(string name, StateMachineFlowEnemies _stateMachineFlow)
     {
         this.name = name;
         this.stateMachineFlow = _stateMachineFlow;

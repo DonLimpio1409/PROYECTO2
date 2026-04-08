@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class FSMEnemysManager : StateMachineFlow
+public class FSMEnemysManager : StateMachineFlowEnemies
 {
     //Estados
     public Idle idleState;
@@ -17,12 +17,10 @@ public class FSMEnemysManager : StateMachineFlow
         patrolState = new Patrol(this);
         chaseState = new Chase(this);
     }
-    protected override void GetInitialState(out TemplateStateMachine _stateMachine)
+    protected override void GetInitialState(out TemplateStateMachineEnemies _stateMachine)
     {
-        // Asignar un valor a la variable de salida
-        _stateMachine = idleState;
+        // Definir el primer estado del que parte en la maquina
         _stateMachine = patrolState;
-        _stateMachine = chaseState;
     }
 
     [Header("Elementos de uso")]
@@ -43,7 +41,11 @@ public class FSMEnemysManager : StateMachineFlow
     [Header("Detectar al jugador")]
     public Ray rayDetector = new Ray();
     public RaycastHit hit;
-    public float rayLength = 2f;
+    public float raysLength = 6f;
+    public Vector3 RayDirectionForward = new Vector3(0, 0, -6);
+    public Vector3 RayDirectionBackward = new Vector3(0, 0, 6);
+    public Vector3 RayDirectionRight = new Vector3(6, 0, 0);
+    public Vector3 RayDirectionLeft = new Vector3(-6, 0, 0);
 
     public void OnTriggerEnter(Collider other)
     {

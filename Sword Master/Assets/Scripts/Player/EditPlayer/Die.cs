@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
 
-public class Chase : TemplateStateMachine
+public class Die : TemplateStateMachinePlayer
 {
-    private FSMEnemysManager _fsm;
+    private FSMPlayerManager _fsm;
 
-    public Chase(FSMEnemysManager _stateMachineFlow) : base("Chase", (StateMachineFlow)_stateMachineFlow)
+    public Die(FSMPlayerManager _stateMachineFlow) : base("Die", (StateMachineFlowPlayer)_stateMachineFlow)
     {
         _fsm = _stateMachineFlow;
     }
 
     public override void Enter()
     {
-        base.Enter();  //Llama al m�todo de entrada de mi clase base
+        base.Enter();
         //_fsm.rend.material = _fsm.materialEstados[2];
         //Activar animacion
     }
