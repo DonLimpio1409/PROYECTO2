@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StateMachineFlow : MonoBehaviour
+public class StateMachineFlowPlayer : MonoBehaviour
 {
-    TemplateStateMachine currentState;
+    TemplateStateMachinePlayer currentState;
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class StateMachineFlow : MonoBehaviour
             currentState.Enter();
         }
     }
-    protected virtual void GetInitialState(out TemplateStateMachine _stateMachine)
+    protected virtual void GetInitialState(out TemplateStateMachinePlayer _stateMachine)
     {
         // Asignar un valor a la variable de salida
         _stateMachine = null;
@@ -36,7 +36,7 @@ public class StateMachineFlow : MonoBehaviour
         }
     }
 
-    public void ChangeState(TemplateStateMachine newState)
+    public void ChangeState(TemplateStateMachinePlayer newState)
     {
         currentState.Exit();
         currentState = newState;
@@ -52,7 +52,4 @@ public class StateMachineFlow : MonoBehaviour
             stateName.text = "Warning: no current state";
         else stateName.text = name;
     }
-
-
-
 }

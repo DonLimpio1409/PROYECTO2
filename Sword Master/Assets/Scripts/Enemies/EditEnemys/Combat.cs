@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 
-public class WaitCombat : TemplateStateMachine
+public class Combat : TemplateStateMachineEnemies
 {
     private FSMEnemysManager _fsm;
 
-    public WaitCombat(FSMEnemysManager _stateMachineFlow) : base("WaitCombat", (StateMachineFlow)_stateMachineFlow)
+    public Combat(FSMEnemysManager _stateMachineFlow) : base("Combat", (StateMachineFlowEnemies)_stateMachineFlow)
     {
         _fsm = _stateMachineFlow;
     }
@@ -15,19 +15,19 @@ public class WaitCombat : TemplateStateMachine
     public override void Enter()
     {
         base.Enter();  //Llama al m�todo de entrada de mi clase base
-        //_fsm.rend.material = _fsm.materialEstados[4];
+        //_fsm.rend.material = _fsm.materialEstados[3];
         //Activar animacion
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        //Lógica de espera antes del combate
+        //Lógica de combate
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        //Movimiento de espera antes del combate
+        //Movimiento de combate
     }
 }

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : TemplateStateMachine
+public class Patrol : TemplateStateMachineEnemies
 {
     private FSMEnemysManager _fsm;
 
-    public Patrol(FSMEnemysManager _stateMachineFlow) : base("Patrol", (StateMachineFlow)_stateMachineFlow)
+    public Patrol(FSMEnemysManager _stateMachineFlow) : base("Patrol", (StateMachineFlowEnemies)_stateMachineFlow)
     {
         _fsm = _stateMachineFlow;
     }
@@ -22,6 +22,7 @@ public class Patrol : TemplateStateMachine
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        Detected();
         if (_fsm.goIdle)
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager) stateMachineFlow).idleState);
@@ -88,6 +89,17 @@ public class Patrol : TemplateStateMachine
             rotation = Quaternion.Euler(euler);
 
             _fsm.transform.rotation = Quaternion.Slerp(_fsm.transform.rotation, rotation, 3 * Time.deltaTime);
+        }
+    }
+
+    public void Detected()
+    {
+        _fsm.rayDetector = new Ray(_fsm.transform.position, _fsm.transform.forward);
+        Debug.DrawRay(_fsm.transform.position, _fsm.transform.forward * _fsm.raysLength, Color.red);
+
+        if (Physics.Raycast(_fsm.rayDetector, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }
     }
 }
