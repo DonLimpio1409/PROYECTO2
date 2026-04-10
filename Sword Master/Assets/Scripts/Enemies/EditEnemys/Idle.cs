@@ -45,10 +45,39 @@ public class Idle : TemplateStateMachineEnemies
 
     public void Detected()
     {
-        _fsm.rayDetector = new Ray(_fsm.transform.position, _fsm.RayDirectionForward);
-        Debug.DrawRay(_fsm.transform.position, _fsm.RayDirectionForward * _fsm.raysLength, Color.red);
+        Vector3 RayDirectionForward = _fsm.transform.TransformDirection(0, 0, -1f);
+        Vector3 RayDirectionBackward = _fsm.transform.TransformDirection(0, 0, 1f);
+        Vector3 RayDirectionRight = _fsm.transform.TransformDirection(1f, 0, 0);
+        Vector3 RayDirectionLeft = _fsm.transform.TransformDirection(-1f, 0, 0);
 
-        if (Physics.Raycast(_fsm.rayDetector, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
+        _fsm.rayDetectorForward = new Ray(_fsm.transform.position, RayDirectionForward);
+        Debug.DrawRay(_fsm.transform.position, RayDirectionForward * _fsm.raysLength, Color.red);
+
+        if (Physics.Raycast(_fsm.rayDetectorForward, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
+        }
+
+        _fsm.rayDetectorBackward = new Ray(_fsm.transform.position, RayDirectionBackward);
+        Debug.DrawRay(_fsm.transform.position, RayDirectionBackward * _fsm.raysLength, Color.red);
+
+        if (Physics.Raycast(_fsm.rayDetectorBackward, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
+        }
+
+        _fsm.rayDetectorRight = new Ray(_fsm.transform.position, RayDirectionRight);
+        Debug.DrawRay(_fsm.transform.position, RayDirectionRight * _fsm.raysLength, Color.red);
+
+        if (Physics.Raycast(_fsm.rayDetectorRight, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
+        }
+
+        _fsm.rayDetectorLeft = new Ray(_fsm.transform.position, RayDirectionLeft);
+        Debug.DrawRay(_fsm.transform.position, RayDirectionLeft * _fsm.raysLength, Color.red);
+
+        if (Physics.Raycast(_fsm.rayDetectorLeft, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }

@@ -14,20 +14,22 @@ public class WaitCombat : TemplateStateMachineEnemies
 
     public override void Enter()
     {
-        base.Enter();  //Llama al m�todo de entrada de mi clase base
-        //_fsm.rend.material = _fsm.materialEstados[4];
+        base.Enter();
         //Activar animacion
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        //Lógica de espera antes del combate
+
+        if (_fsm.greenLight)
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).combatState);
+        }
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        //Movimiento de espera antes del combate
     }
 }

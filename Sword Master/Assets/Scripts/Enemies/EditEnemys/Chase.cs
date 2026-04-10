@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Chase : TemplateStateMachineEnemies
 {
     private FSMEnemysManager _fsm;
 
-    public Chase(FSMEnemysManager _stateMachineFlow) : base("Chase", (StateMachineFlowEnemies)_stateMachineFlow)
+    public Chase(FSMEnemysManager _stateMachineFlow) : base("WaitCombat", (StateMachineFlowEnemies)_stateMachineFlow)
     {
         _fsm = _stateMachineFlow;
     }
@@ -15,19 +17,24 @@ public class Chase : TemplateStateMachineEnemies
     public override void Enter()
     {
         base.Enter();
-        //_fsm.rend.material = _fsm.materialEstados[2];
+        _fsm.goWaitCombat = false;
         //Activar animacion
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        //Lógica de persecución
+
+        if(_fsm.goWaitCombat)
+        {
+            stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).waitCombatState);
+        }
+        
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        //Movimiento de persecución
+        _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.player.transform.position, _fsm.speed * Time.deltaTime);
     }
 }
