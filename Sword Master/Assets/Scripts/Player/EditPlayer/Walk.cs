@@ -1,5 +1,6 @@
 using UnityEditor.Callbacks;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Walk : TemplateStateMachinePlayer
 {
@@ -20,14 +21,20 @@ public class Walk : TemplateStateMachinePlayer
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        EnemyDetected();     
+        EnemyDetected();
+
+        /*
+        if(Llega al final)
+        {
+            Cambio de escena.
+        }
+        */
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        _fsm.rb.linearVelocity = 
-        new Vector3(_fsm.gameObject.transform.position.x * _fsm.speed * Time.deltaTime, _fsm.gameObject.transform.position.y, _fsm.gameObject.transform.position.z);
+        _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.destiny.transform.position, _fsm.speed * Time.deltaTime);
     }
 
     void EnemyDetected()

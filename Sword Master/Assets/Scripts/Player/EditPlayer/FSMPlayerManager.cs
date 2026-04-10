@@ -31,14 +31,21 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
 
     [Header("Walk")]
-    public float speed = 3;
+    public float speed = 2;
     public bool enemyBlock;
+    public GameObject destiny;
 
-    public void OnTriggerEnter(Collider other)
+    //[Header("Fight")]
+    public List<GameObject> fightersList = new List<GameObject>();
+    public GameObject camera;
+    public int i = 0;
+
+    public void OnCollisionEnter(Collision other)
     {
-        if(other.tag == "Enemy")
+        if(other.gameObject.CompareTag("Enemy"))
         {
             enemyBlock = true;
+            fightersList.Add(other.gameObject);
         }
     }
 }
