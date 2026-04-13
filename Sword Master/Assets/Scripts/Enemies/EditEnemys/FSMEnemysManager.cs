@@ -55,6 +55,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     //[Header("Detectar al jugador")]
     public bool goWaitCombat;
     public GameObject player;
+    public bool detected;
 
     //WaitCombat
     public bool greenLight;
@@ -65,6 +66,11 @@ public class FSMEnemysManager : StateMachineFlowEnemies
         {
             changeWayPoint = true;
             goIdle = true;
+        }
+
+        if(other.tag == "Sword")
+        {
+            upEnemy--;
         }
     }
 
