@@ -35,6 +35,12 @@ public class Chase : TemplateStateMachineEnemies
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
+        Vector3 direction = _fsm.player.transform.position - _fsm.transform.position;
+        direction.y = 0f;
+        Quaternion objective = Quaternion.LookRotation(-direction);
+
+        _fsm.transform.rotation = Quaternion.Lerp(_fsm.transform.rotation, objective, Time.deltaTime * 20f);
+
         _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.player.transform.position, _fsm.speed * Time.deltaTime);
     }
 }
