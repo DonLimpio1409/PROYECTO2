@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -16,7 +17,9 @@ public class Idle : TemplateStateMachineEnemies
     WayPopintData.WayPoint target;
     public override void Enter()
     {
-        base.Enter();  //Llama al m�todo de entrada de mi clase base
+        base.Enter();
+        _fsm.anim.SetBool("Surprise", false);
+        _fsm.anim.SetBool("Walking", false);
         _fsm.stateNameT.text = "Idle";
 
         target = _fsm.waypointData.wayPointList[_fsm.currentWayPointIndex];

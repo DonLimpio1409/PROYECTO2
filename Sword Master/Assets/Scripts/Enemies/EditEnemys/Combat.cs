@@ -16,7 +16,9 @@ public class Combat : TemplateStateMachineEnemies
     public override void Enter()
     {
         base.Enter();
-        //Activar animacion
+        _fsm.anim.SetBool("Combat", true);
+        _fsm.anim.SetBool("Walking", false);
+        _fsm.anim.SetBool("Surprise", false);
     }
 
     public override void UpdateLogic()
@@ -38,6 +40,7 @@ public class Combat : TemplateStateMachineEnemies
             _fsm.gameObject.GetComponent<FSMEnemysManager>().enabled = false;
             _fsm.rb.constraints = RigidbodyConstraints.None;
             _fsm.rb.AddForce(20f, 0, 0);
+            _fsm.anim.SetBool("Die", true);
         }
     }
 }

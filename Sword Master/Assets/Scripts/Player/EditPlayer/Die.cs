@@ -12,8 +12,6 @@ public class Die : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
-        //_fsm.rend.material = _fsm.materialEstados[2];
-        //Activar animacion
     }
 
     public override void UpdateLogic()

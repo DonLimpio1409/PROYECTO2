@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    Animator anim;
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
         Movement();
@@ -14,5 +19,16 @@ public class Sword : MonoBehaviour
         mousePosition.z = 3f; // distancia desde la cámara
 
         transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+    public void Block()
+    {
+        if(Input.GetMouseButton(0))
+        {
+
+        }
+        else
+        {
+ 
+        }
     }
 }

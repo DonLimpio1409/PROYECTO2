@@ -15,6 +15,8 @@ public class Patrol : TemplateStateMachineEnemies
     {
         base.Enter();  
         IniciateWayPoints();
+        _fsm.anim.SetBool("Surprise", false);
+        _fsm.anim.SetBool("Walking", true);
         _fsm.stateNameT.text = "Patrol";
         _fsm.goIdle = false;//Reafirmamos que es False para que no se vaya inmediatamente cuando entra al estado.
     }
@@ -104,6 +106,8 @@ public class Patrol : TemplateStateMachineEnemies
 
         if (Physics.Raycast(_fsm.rayDetectorForward, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
         {
+            _fsm.anim.SetBool("Surprise", true);
+            new WaitForFixedUpdate();
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }
 
@@ -112,6 +116,8 @@ public class Patrol : TemplateStateMachineEnemies
 
         if (Physics.Raycast(_fsm.rayDetectorBackward, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
         {
+            _fsm.anim.SetBool("Surprise", true);
+            new WaitForFixedUpdate();
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }
 
@@ -120,6 +126,8 @@ public class Patrol : TemplateStateMachineEnemies
 
         if (Physics.Raycast(_fsm.rayDetectorRight, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
         {
+            _fsm.anim.SetBool("Surprise", true);
+            new WaitForFixedUpdate();
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }
 
@@ -128,6 +136,8 @@ public class Patrol : TemplateStateMachineEnemies
 
         if (Physics.Raycast(_fsm.rayDetectorLeft, out _fsm.hit, _fsm.raysLength) && _fsm.hit.collider.gameObject.tag == "Player")
         {
+            _fsm.anim.SetBool("Surprise", true);
+            new WaitForFixedUpdate();
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).chaseState);
         }
     }

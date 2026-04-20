@@ -17,6 +17,8 @@ public class Chase : TemplateStateMachineEnemies
     public override void Enter()
     {
         base.Enter();
+        _fsm.anim.SetBool("Surprise", false);
+        _fsm.anim.SetBool("Walking", true);
         _fsm.goWaitCombat = false;
         //Activar animacion
     }
@@ -24,12 +26,10 @@ public class Chase : TemplateStateMachineEnemies
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-
         if(_fsm.goWaitCombat)
         {
             stateMachineFlow.ChangeState(((FSMEnemysManager)stateMachineFlow).waitCombatState);
         }
-        
     }
 
     public override void UpdatePhysics()
