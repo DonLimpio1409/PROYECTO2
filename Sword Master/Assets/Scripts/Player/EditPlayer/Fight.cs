@@ -1,3 +1,4 @@
+using Unity.Android.Gradle;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -16,7 +17,7 @@ public class Fight : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
-        //Activar animacion
+        _fsm.anim.SetBool("Walk", false);
     }
 
     public override void UpdateLogic()
@@ -43,10 +44,29 @@ public class Fight : TemplateStateMachinePlayer
                 stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).walkState);
             }   
         }
+
+        Block();
+
+        if(_fsm.blocking)
+        {
+            
+        }
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
+    }
+
+    public void Block()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            _fsm.blocking = true;
+        }
+        else
+        {
+            _fsm.blocking = false;
+        }
     }
 }

@@ -31,6 +31,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
+    public Animator anim = new Animator();
     public TextMeshProUGUI stateNameT;
 
 
@@ -43,6 +44,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public List<GameObject> fightersList = new List<GameObject>();
     public GameObject cameraR;
     public int i = 0; 
+    public bool blocking;
 
     public void OnCollisionEnter(Collision other)
     {

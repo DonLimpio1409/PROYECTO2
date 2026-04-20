@@ -30,6 +30,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
 
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
+    public Animator anim = new Animator();
     public TextMeshProUGUI stateNameT;
     public int upEnemy = 3;
 
