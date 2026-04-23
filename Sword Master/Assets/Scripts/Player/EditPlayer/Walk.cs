@@ -14,6 +14,7 @@ public class Walk : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
+        _fsm.anim.SetBool("Walk", true);
         _fsm.stateName.text = "Walk";
         _fsm.enemyBlock = false;
     }
@@ -34,6 +35,11 @@ public class Walk : TemplateStateMachinePlayer
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
+        Vector3 direction = _fsm.destiny.transform.position - _fsm.transform.position;
+        Quaternion objective = Quaternion.LookRotation(direction);
+
+        _fsm.transform.rotation = Quaternion.Lerp(_fsm.transform.rotation, objective, Time.deltaTime * 1f);
+
         _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.destiny.transform.position, _fsm.speed * Time.deltaTime);
     }
 

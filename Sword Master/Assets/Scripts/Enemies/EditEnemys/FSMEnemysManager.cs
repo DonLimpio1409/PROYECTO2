@@ -30,8 +30,13 @@ public class FSMEnemysManager : StateMachineFlowEnemies
 
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
+    public Animator anim = new Animator();
     public TextMeshProUGUI stateNameT;
     public int upEnemy = 3;
+
+    [Header("Animation")]
+    public AnimatorStateInfo currentAnimation;
+    public bool sen = false;
 
     [Header("Patrol")]
     public bool goIdle;
@@ -45,16 +50,25 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public GameObject waypoint3;
 
     [Header("Detectar al jugador")]
+    //Rectos
     public Ray rayDetectorForward = new Ray();
     public Ray rayDetectorBackward = new Ray();
     public Ray rayDetectorLeft = new Ray();
     public Ray rayDetectorRight = new Ray();
+
+    //Diagonales
+    public Ray rayDetectorLeftFD = new Ray();
+    public Ray rayDetectorRightBD = new Ray();
+    public Ray rayDetectorRightFD = new Ray();
+    public Ray rayDetectorLeftBD = new Ray();
+
     public RaycastHit hit;
     public float raysLength = 7f;
 
     //[Header("Detectar al jugador")]
     public bool goWaitCombat;
     public GameObject player;
+    public bool detected;
 
     //WaitCombat
     public bool greenLight;
@@ -65,6 +79,11 @@ public class FSMEnemysManager : StateMachineFlowEnemies
         {
             changeWayPoint = true;
             goIdle = true;
+        }
+
+        if(other.tag == "Sword")
+        {
+            upEnemy--;
         }
     }
 
