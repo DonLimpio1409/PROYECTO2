@@ -34,6 +34,10 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public TextMeshProUGUI stateNameT;
     public int upEnemy = 3;
 
+    [Header("Animation")]
+    public AnimatorStateInfo currentAnimation;
+    public bool sen = false;
+
     [Header("Patrol")]
     public bool goIdle;
     public bool changeWayPoint;
@@ -46,10 +50,18 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public GameObject waypoint3;
 
     [Header("Detectar al jugador")]
+    //Rectos
     public Ray rayDetectorForward = new Ray();
     public Ray rayDetectorBackward = new Ray();
     public Ray rayDetectorLeft = new Ray();
     public Ray rayDetectorRight = new Ray();
+
+    //Diagonales
+    public Ray rayDetectorLeftFD = new Ray();
+    public Ray rayDetectorRightBD = new Ray();
+    public Ray rayDetectorRightFD = new Ray();
+    public Ray rayDetectorLeftBD = new Ray();
+
     public RaycastHit hit;
     public float raysLength = 7f;
 
