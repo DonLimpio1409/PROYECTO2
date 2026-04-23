@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Mono.Cecil.Cil;
+using System;
+using Unity.VisualScripting;
 
 public class FSMPlayerManager : StateMachineFlowPlayer
 {
-        //Estados
+    //Estados
     public Walk walkState;
     public Fight fightState;
     public ChangeScene changeSceneState;
@@ -27,18 +31,20 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
+    public Animator anim = new Animator();
     public TextMeshProUGUI stateNameT;
 
 
     [Header("Walk")]
-    public float speed = 2;
+    public float speed = 1f;
     public bool enemyBlock;
     public GameObject destiny;
 
     //[Header("Fight")]
     public List<GameObject> fightersList = new List<GameObject>();
-    public GameObject camera;
-    public int i = 0;
+    public GameObject cameraR;
+    public int i = 0; 
+    public bool blocking;
 
     public void OnCollisionEnter(Collision other)
     {

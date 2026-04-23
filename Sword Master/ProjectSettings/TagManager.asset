@@ -6,6 +6,8 @@ TagManager:
   tags:
   - WayPoint
   - Enemy
+  - Sword
+  - VisionArea
   layers:
   - Default
   - TransparentFX
