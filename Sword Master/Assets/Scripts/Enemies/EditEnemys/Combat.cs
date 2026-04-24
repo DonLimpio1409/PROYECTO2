@@ -39,6 +39,7 @@ public class Combat : TemplateStateMachineEnemies
         {
             _fsm.gameObject.GetComponent<FSMEnemysManager>().enabled = false;
             _fsm.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            _fsm.awayEnemies.GetComponent<CapsuleCollider>().enabled = false;
             _fsm.rb.constraints = RigidbodyConstraints.None;
             _fsm.rb.AddForce(20f, 0, 0);
             _fsm.anim.SetBool("Die", true);

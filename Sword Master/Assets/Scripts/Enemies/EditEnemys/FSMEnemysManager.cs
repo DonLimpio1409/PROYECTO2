@@ -61,14 +61,15 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public Ray rayDetectorRightBD = new Ray();
     public Ray rayDetectorRightFD = new Ray();
     public Ray rayDetectorLeftBD = new Ray();
+    public bool detected;
 
     public RaycastHit hit;
     public float raysLength = 7f;
 
-    //[Header("Detectar al jugador")]
+    [Header("Objetos")]
     public bool goWaitCombat;
     public GameObject player;
-    public bool detected;
+    public GameObject awayEnemies;
 
     //WaitCombat
     public bool greenLight;
