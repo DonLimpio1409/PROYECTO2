@@ -1,34 +1,78 @@
-using UnityEditor.AdaptivePerformance.Editor;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    Animator anim;
+    [Header("Hand")]
+    public Transform Hand;
+    public float swayAmount = 0.05f;
+    public float swaySmooth = 8f;
+    public float handSmooth = 12f;
+    private Vector3 initialHandPos;
+
+    [Header("Sword")]
+    public float sensitivity = 2f;
+    public float swordDelay = 0.06f;
+    private Quaternion swordTargetRot;
+
+    private Vector2 mouseDir;
+    private Vector2 mouseDelta;
+
     void Start()
     {
-        anim = GetComponent<Animator>();
+        initialHandPos = Hand.localPosition;
+
+        // Bloquear ratón
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
+
     void Update()
     {
-        Movement();
+        mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouseDir += mouseDelta * sensitivity;
+
+        UpdateHand();
+        UpdateSword();
+        CheckCalibration();
     }
 
-    public void Movement()
+    void UpdateHand()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = 3f; // distancia desde la cámara
+        Vector3 sway = new Vector3(mouseDelta.x, mouseDelta.y, 0) * swayAmount;
+        Vector3 targetPos = initialHandPos + sway;
 
-        transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+        Hand.localPosition = Vector3.Lerp(Hand.localPosition, targetPos, Time.deltaTime * swaySmooth);
+
+        Quaternion targetRot = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
+
+        Hand.localRotation = Quaternion.Slerp(
+            Hand.localRotation,
+            targetRot,
+            Time.deltaTime * handSmooth
+        );
     }
-    public void Block()
-    {
-        if(Input.GetMouseButton(0))
-        {
 
-        }
-        else
+    void UpdateSword()
+    {
+        swordTargetRot = Hand.rotation;
+
+        // Rotar 90° para que el eje X mire hacia delante
+        Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
+
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            corrected,
+            Time.deltaTime / swordDelay
+        );
+    }
+
+    void CheckCalibration()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
         {
- 
+            mouseDir = Vector2.zero;
+            Hand.localRotation = Quaternion.identity;
+            transform.rotation = Quaternion.identity;
         }
     }
 }
