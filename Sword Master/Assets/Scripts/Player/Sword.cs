@@ -17,11 +17,12 @@ public class Sword : MonoBehaviour
     private Vector2 mouseDir;
     private Vector2 mouseDelta;
 
+    private bool blocking = false;
+
     void Start()
     {
         initialHandPos = Hand.localPosition;
 
-        // Bloquear ratón
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -34,6 +35,16 @@ public class Sword : MonoBehaviour
         UpdateHand();
         UpdateSword();
         CheckCalibration();
+        CheckBlock();
+    }
+
+    void CheckBlock()
+    {
+        if (Input.GetMouseButtonDown(1))
+            blocking = true;
+
+        if (Input.GetMouseButtonUp(1))
+            blocking = false;
     }
 
     void UpdateHand()
@@ -45,25 +56,27 @@ public class Sword : MonoBehaviour
 
         Quaternion targetRot = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
 
-        Hand.localRotation = Quaternion.Slerp(
-            Hand.localRotation,
-            targetRot,
-            Time.deltaTime * handSmooth
-        );
+        Hand.localRotation = Quaternion.Slerp(Hand.localRotation, targetRot, Time.deltaTime * handSmooth);
     }
 
     void UpdateSword()
     {
+        if (blocking)
+        {
+            // Espada horizontal (bloqueo)
+            Quaternion blockRot = Quaternion.Euler(0, 0, -90);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, blockRot, Time.deltaTime * 12f);
+
+            return;
+        }
+
+        // Movimiento normal estilo Wii
         swordTargetRot = Hand.rotation;
 
-        // Rotar 90° para que el eje X mire hacia delante
         Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
 
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            corrected,
-            Time.deltaTime / swordDelay
-        );
+        transform.rotation = Quaternion.Slerp(transform.rotation, corrected, Time.deltaTime / swordDelay);
     }
 
     void CheckCalibration()

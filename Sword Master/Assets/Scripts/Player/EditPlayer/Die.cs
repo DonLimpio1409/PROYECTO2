@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Die : TemplateStateMachinePlayer
 {
@@ -12,6 +13,9 @@ public class Die : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
+        stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).walkState);
+        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(activeSceneIndex);
     }
 
     public override void UpdateLogic()

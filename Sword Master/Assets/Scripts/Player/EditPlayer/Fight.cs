@@ -17,12 +17,44 @@ public class Fight : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
+        _fsm.stateNameT.text = "Fight";
         _fsm.anim.SetBool("Walk", false);
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        RotateAndCount();
+        
+        if(_fsm.hp <= 0)
+        {
+            stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).dieState);
+        }
+
+        Block();
+    }
+
+    public override void UpdatePhysics()
+    {
+        base.UpdatePhysics();
+    }
+
+    public void Block()
+    {
+        if(Input.GetMouseButton(1))
+        {
+            _fsm.blocking = true;
+        }
+        else
+        {
+            _fsm.blocking = false;
+        }
+    }
+
+    //Hacer daño al enemigo y comrpobar si el enemigo muere.
+    public void RotateAndCount()
+    {
         int upEnemy = _fsm.fightersList[_fsm.i].GetComponent<FSMEnemysManager>().upEnemy;
         _fsm.fightersList[_fsm.i].GetComponent<FSMEnemysManager>().greenLight = true;
 
@@ -43,30 +75,6 @@ public class Fight : TemplateStateMachinePlayer
             {
                 stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).walkState);
             }   
-        }
-
-        Block();
-
-        if(_fsm.blocking)
-        {
-            
-        }
-    }
-
-    public override void UpdatePhysics()
-    {
-        base.UpdatePhysics();
-    }
-
-    public void Block()
-    {
-        if(Input.GetMouseButton(0))
-        {
-            _fsm.blocking = true;
-        }
-        else
-        {
-            _fsm.blocking = false;
         }
     }
 }

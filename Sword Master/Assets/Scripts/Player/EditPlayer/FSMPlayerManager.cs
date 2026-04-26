@@ -40,11 +40,12 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public bool enemyBlock;
     public GameObject destiny;
 
-    //[Header("Fight")]
+    [Header("Fight")]
     public List<GameObject> fightersList = new List<GameObject>();
     public GameObject cameraR;
     public int i = 0; 
     public bool blocking;
+    public int hp = 3;
 
     public void OnCollisionEnter(Collision other)
     {
