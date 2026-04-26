@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class FSMEnemysManager : StateMachineFlowEnemies
 {
@@ -71,8 +72,15 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public GameObject player;
     public GameObject awayEnemies;
 
-    //WaitCombat
+    [Header("WaitCombat")]
     public bool greenLight;
+
+    //[Header("Combat")]
+    public bool punch;
+    public bool bloking = true;
+    public Image img;
+    public int rdn = 0;
+    public int hitProbably = 2000;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -82,9 +90,10 @@ public class FSMEnemysManager : StateMachineFlowEnemies
             goIdle = true;
         }
 
-        if(other.tag == "Sword")
+        if(other.tag == "Sword" && bloking == false)
         {
             upEnemy--;
+            bloking = true;
         }
     }
 
