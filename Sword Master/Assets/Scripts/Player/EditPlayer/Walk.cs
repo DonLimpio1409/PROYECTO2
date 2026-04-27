@@ -15,7 +15,6 @@ public class Walk : TemplateStateMachinePlayer
     {
         base.Enter();
         _fsm.anim.SetBool("Walk", true);
-        _fsm.stateName.text = "Walk";
         _fsm.enemyBlock = false;
     }
 

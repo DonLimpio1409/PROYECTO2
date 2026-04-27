@@ -20,7 +20,6 @@ public class Idle : TemplateStateMachineEnemies
         base.Enter();
         _fsm.anim.SetBool("Surprise", false);
         _fsm.anim.SetBool("Walking", false);
-        _fsm.stateNameT.text = "Idle";
 
         target = _fsm.waypointData.wayPointList[_fsm.currentWayPointIndex];
     }

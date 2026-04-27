@@ -17,7 +17,6 @@ public class Fight : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
-        _fsm.stateNameT.text = "Fight";
         _fsm.anim.SetBool("Walk", false);
     }
 
@@ -33,6 +32,8 @@ public class Fight : TemplateStateMachinePlayer
         }
 
         Block();
+
+        _fsm.livesText.text = "Vidas: " + _fsm.hp;
     }
 
     public override void UpdatePhysics()

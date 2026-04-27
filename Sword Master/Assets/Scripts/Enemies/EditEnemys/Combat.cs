@@ -20,6 +20,7 @@ public class Combat : TemplateStateMachineEnemies
         _fsm.anim.SetBool("Walking", false);
         _fsm.anim.SetBool("Surprise", false);
 
+        _fsm.canPunchAgain = true;
         _fsm.bloking = true; 
     }
 
@@ -27,9 +28,13 @@ public class Combat : TemplateStateMachineEnemies
     {
         base.UpdateLogic();
         _fsm.rdn = Random.Range(0, _fsm.hitProbably);
-        if(_fsm.rdn == 0)
+        if(_fsm.rdn == 0 && _fsm.canPunchAgain)
         {
+            Debug.Log("Te pego");
             Hit();
+            _fsm.canPunchAgain = false;
+            _fsm.StartCoroutine(WaitToPunchAgain());
+
         }
         Die();
     }
@@ -60,19 +65,30 @@ public class Combat : TemplateStateMachineEnemies
     public void Hit()
     {
         _fsm.anim.SetBool("Hit", true);
-
-        if(_fsm.player.GetComponent<FSMPlayerManager>().blocking)
+        
+        if(_fsm.player.GetComponent<FSMPlayerManager>().blocking == false)
         {
-            _fsm.bloking = false;
+            _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
+            _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;   
         }
         else
         {
-            _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;   
-            _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
+            _fsm.bloking = false;
         }
 
-        _fsm.punch = false;
+        _fsm.StartCoroutine(WaitTilt());
+    }
+
+    IEnumerator WaitTilt()
+    {
+        yield return new WaitForEndOfFrame();
         _fsm.anim.SetBool("Hit", false);
         _fsm.img.GetComponent<Animator>().SetBool("Damage", false);
+    }
+
+    IEnumerator WaitToPunchAgain()
+    {
+        yield return new WaitForSeconds(2f);
+        _fsm.canPunchAgain = true;
     }
 }

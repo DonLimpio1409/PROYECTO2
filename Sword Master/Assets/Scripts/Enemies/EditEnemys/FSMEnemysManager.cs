@@ -32,7 +32,6 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
     public Animator anim = new Animator();
-    public TextMeshProUGUI stateNameT;
     public int upEnemy = 3;
 
     [Header("Animation")]
@@ -75,8 +74,8 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     [Header("WaitCombat")]
     public bool greenLight;
 
-    //[Header("Combat")]
-    public bool punch;
+    [Header("Combat")]
+    public bool canPunchAgain;
     public bool bloking = true;
     public Image img;
     public int rdn = 0;
