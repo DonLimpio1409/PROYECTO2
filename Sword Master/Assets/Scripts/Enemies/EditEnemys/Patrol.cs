@@ -17,7 +17,6 @@ public class Patrol : TemplateStateMachineEnemies
         IniciateWayPoints();
         _fsm.anim.SetBool("Surprise", false);
         _fsm.anim.SetBool("Walking", true);
-        _fsm.stateNameT.text = "Patrol";
         _fsm.goIdle = false;//Reafirmamos que es False para que no se vaya inmediatamente cuando entra al estado.
     }
 

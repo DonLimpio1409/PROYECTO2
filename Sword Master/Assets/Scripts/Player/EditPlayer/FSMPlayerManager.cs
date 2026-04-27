@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -13,14 +14,12 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     //Estados
     public Walk walkState;
     public Fight fightState;
-    public ChangeScene changeSceneState;
     public Die dieState;
 
     private void Awake()
     {
         walkState = new Walk(this);
         fightState = new Fight(this);
-        changeSceneState = new ChangeScene(this);
         dieState = new Die(this);
     }
     protected override void GetInitialState(out TemplateStateMachinePlayer _stateMachine)
@@ -32,7 +31,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
     public Animator anim = new Animator();
-    public TextMeshProUGUI stateNameT;
+    public TextMeshProUGUI livesText;
 
 
     [Header("Walk")]
@@ -53,6 +52,12 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         {
             enemyBlock = true;
             fightersList.Add(other.gameObject);
+        }
+
+        if(other.gameObject.CompareTag("Destiny"))
+        {
+            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(activeSceneIndex + 1);
         }
     }
 }

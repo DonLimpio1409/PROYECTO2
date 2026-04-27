@@ -30,13 +30,18 @@ public class Sword : MonoBehaviour
     void Update()
     {
         mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        mouseDir += mouseDelta * sensitivity;
+
+        CheckBlock();
+        CheckCalibration();
+
+        if (!blocking)
+            mouseDir += mouseDelta * sensitivity;
 
         UpdateHand();
         UpdateSword();
-        CheckCalibration();
-        CheckBlock();
     }
+
+    // ---------------- BLOQUEO ----------------
 
     void CheckBlock()
     {
@@ -47,37 +52,80 @@ public class Sword : MonoBehaviour
             blocking = false;
     }
 
+    // ---------------- MANO ----------------
+
     void UpdateHand()
     {
+        if (blocking)
+        {
+            // Mano congelada durante el bloqueo
+            Hand.localPosition = Vector3.Lerp(
+                Hand.localPosition,
+                initialHandPos,
+                Time.deltaTime * 10f
+            );
+
+            Hand.localRotation = Quaternion.Slerp(
+                Hand.localRotation,
+                Quaternion.identity,
+                Time.deltaTime * 10f
+            );
+
+            return;
+        }
+
+        // Sway normal
         Vector3 sway = new Vector3(mouseDelta.x, mouseDelta.y, 0) * swayAmount;
         Vector3 targetPos = initialHandPos + sway;
 
-        Hand.localPosition = Vector3.Lerp(Hand.localPosition, targetPos, Time.deltaTime * swaySmooth);
+        Hand.localPosition = Vector3.Lerp(
+            Hand.localPosition,
+            targetPos,
+            Time.deltaTime * swaySmooth
+        );
 
+        // Rotación estilo Wii
         Quaternion targetRot = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
 
-        Hand.localRotation = Quaternion.Slerp(Hand.localRotation, targetRot, Time.deltaTime * handSmooth);
+        Hand.localRotation = Quaternion.Slerp(
+            Hand.localRotation,
+            targetRot,
+            Time.deltaTime * handSmooth
+        );
     }
+
+    // ---------------- ESPADA ----------------
 
     void UpdateSword()
     {
         if (blocking)
         {
-            // Espada horizontal (bloqueo)
+            // Rotación de bloqueo RELATIVA a la mano (localRotation)
             Quaternion blockRot = Quaternion.Euler(0, 0, -90);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, blockRot, Time.deltaTime * 12f);
+            transform.localRotation = Quaternion.Slerp(
+                transform.localRotation,
+                blockRot,
+                Time.deltaTime * 12f
+            );
 
             return;
         }
 
-        // Movimiento normal estilo Wii
+        // Movimiento normal estilo Wii Sports Resort
         swordTargetRot = Hand.rotation;
 
+        // Corrección para que el eje X de la espada mire hacia delante
         Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, corrected, Time.deltaTime / swordDelay);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            corrected,
+            Time.deltaTime / swordDelay
+        );
     }
+
+    // ---------------- CALIBRACIÓN ----------------
 
     void CheckCalibration()
     {
@@ -85,7 +133,7 @@ public class Sword : MonoBehaviour
         {
             mouseDir = Vector2.zero;
             Hand.localRotation = Quaternion.identity;
-            transform.rotation = Quaternion.identity;
+            transform.localRotation = Quaternion.identity;
         }
     }
 }
