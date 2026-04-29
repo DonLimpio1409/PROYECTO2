@@ -32,12 +32,17 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public Rigidbody rb = new Rigidbody();
     public Animator anim = new Animator();
     public TextMeshProUGUI livesText;
+    public WayPointDataPlayer wayPointData;
 
 
     [Header("Walk")]
     public float speed = 1f;
     public bool enemyBlock;
-    public GameObject destiny;
+    public bool exit = true;
+    public int e = 0;
+    public GameObject waypoint1;
+    public GameObject waypoint2;
+    public GameObject waypoint3;
 
     [Header("Fight")]
     public List<GameObject> fightersList = new List<GameObject>();
@@ -58,6 +63,23 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         {
             int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(activeSceneIndex + 1);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "WayPointPlayer" && exit)
+        {
+            e++;
+            exit = false;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "WayPointPlayer")
+        {
+            exit = true;
         }
     }
 }

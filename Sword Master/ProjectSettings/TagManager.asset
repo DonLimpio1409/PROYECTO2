@@ -9,6 +9,7 @@ TagManager:
   - Sword
   - VisionArea
   - Destiny
+  - WayPointPlayer
   layers:
   - Default
   - TransparentFX
