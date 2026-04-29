@@ -42,7 +42,8 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public bool goIdle;
     public bool changeWayPoint;
     public WayPopintData waypointData;
-    public float speed = 3;
+    public float walkSpeed = 3;
+    public float chaseSpeed = 3;
     public int currentWayPointIndex = 0;
     public int waitTimeR = 1;
     public GameObject waypoint1;
@@ -62,6 +63,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public Ray rayDetectorRightFD = new Ray();
     public Ray rayDetectorLeftBD = new Ray();
     public bool detected;
+    public GameObject origin;
 
     public RaycastHit hit;
     public float raysLength = 7f;

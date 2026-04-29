@@ -50,7 +50,7 @@ public class Chase : TemplateStateMachineEnemies
         }
         if (_fsm.sen)
         {
-            _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.player.transform.position, _fsm.speed * Time.deltaTime);
+            _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.player.transform.position, _fsm.chaseSpeed * Time.deltaTime);
         }
     }
 }
