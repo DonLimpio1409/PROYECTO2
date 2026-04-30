@@ -72,12 +72,16 @@ public class Patrol : TemplateStateMachineEnemies
 
     public void MoveToPosition()
     {
+        Debug.Log("Posicion WAypoint" + target.wayPointPosition);
+        Debug.Log("_fsm.transform.position" + _fsm.transform.position);
+        
+
         //Mover
         _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, target.wayPointPosition, _fsm.walkSpeed * Time.deltaTime);
 
         //Rotar sin que se caiga
         Vector3 direction = _fsm.origin.transform.position - target.wayPointPosition;
-        direction.y = 0;
+        //direction.y = 0;
 
         if (direction != Vector3.zero)
         {
