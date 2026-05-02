@@ -17,7 +17,11 @@ public class Sword : MonoBehaviour
     private Vector2 mouseDir;
     private Vector2 mouseDelta;
 
-    private bool blocking = false;
+    [Header("Blocking")]
+    public bool blocking = false;
+    public float blocktime = 0f;
+    public float cooldonwBlock = 2f;
+
 
     void Start()
     {
@@ -45,11 +49,28 @@ public class Sword : MonoBehaviour
 
     void CheckBlock()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && cooldonwBlock <= 0f)
+        {
             blocking = true;
+            cooldonwBlock = 1f; 
+        }
+        
+        if (blocking)
+        {
+            blocktime += Time.deltaTime;
 
-        if (Input.GetMouseButtonUp(1))
-            blocking = false;
+            if (blocktime >= 0.5f)
+            {
+                blocking = false;
+                blocktime = 0f;
+                cooldonwBlock = 1f;
+            }
+        }
+        else
+        {
+            if (cooldonwBlock > 0f)
+                cooldonwBlock -= Time.deltaTime;
+        }
     }
 
     // ---------------- MANO ----------------
@@ -59,17 +80,9 @@ public class Sword : MonoBehaviour
         if (blocking)
         {
             // Mano congelada durante el bloqueo
-            Hand.localPosition = Vector3.Lerp(
-                Hand.localPosition,
-                initialHandPos,
-                Time.deltaTime * 10f
-            );
+            Hand.localPosition = Vector3.Lerp(Hand.localPosition, initialHandPos, Time.deltaTime * 10f);
 
-            Hand.localRotation = Quaternion.Slerp(
-                Hand.localRotation,
-                Quaternion.identity,
-                Time.deltaTime * 10f
-            );
+            Hand.localRotation = Quaternion.Slerp(Hand.localRotation, Quaternion.identity, Time.deltaTime * 10f);
 
             return;
         }
@@ -78,20 +91,12 @@ public class Sword : MonoBehaviour
         Vector3 sway = new Vector3(mouseDelta.x, mouseDelta.y, 0) * swayAmount;
         Vector3 targetPos = initialHandPos + sway;
 
-        Hand.localPosition = Vector3.Lerp(
-            Hand.localPosition,
-            targetPos,
-            Time.deltaTime * swaySmooth
-        );
+        Hand.localPosition = Vector3.Lerp(Hand.localPosition, targetPos, Time.deltaTime * swaySmooth);
 
         // Rotación estilo Wii
         Quaternion targetRot = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
 
-        Hand.localRotation = Quaternion.Slerp(
-            Hand.localRotation,
-            targetRot,
-            Time.deltaTime * handSmooth
-        );
+        Hand.localRotation = Quaternion.Slerp(Hand.localRotation, targetRot,Time.deltaTime * handSmooth);
     }
 
     // ---------------- ESPADA ----------------

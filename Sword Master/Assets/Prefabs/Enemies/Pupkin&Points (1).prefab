@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 4753511093749823246}
   serializedVersion: 2
   m_LocalRotation: {x: -0.02459493, y: 0.0040580924, z: -0.7219755, w: 0.6914695}
-  m_LocalPosition: {x: -0.09, y: -0.2075119, z: -1.57}
+  m_LocalPosition: {x: -0.09, y: 2.621, z: -1.57}
   m_LocalScale: {x: 0.4827285, y: 0.5424421, z: 0.48272857}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1102,7 +1102,8 @@ MonoBehaviour:
   goIdle: 0
   changeWayPoint: 0
   waypointData: {fileID: 11400000, guid: b950c1a7fbc42e04885363a15f4e9e56, type: 2}
-  speed: 2
+  walkSpeed: 3
+  chaseSpeed: 3
   currentWayPointIndex: 0
   waitTimeR: 5
   waypoint1: {fileID: 391943107199812764}
@@ -1112,7 +1113,7 @@ MonoBehaviour:
   origin: {fileID: 1885782938751053407}
   raysLength: 6
   goWaitCombat: 0
-  player: {fileID: 0}
+  player: {fileID: 8791249973029334644, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
   awayEnemies: {fileID: 4753511093749823246}
   greenLight: 0
   canPunchAgain: 0
@@ -1120,6 +1121,7 @@ MonoBehaviour:
   img: {fileID: 0}
   rdn: 0
   hitProbably: 1000
+  timeToPunch: 0.5
 --- !u!54 &8515623123194877183
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -64,18 +64,8 @@ public class Combat : TemplateStateMachineEnemies
 
     public void Hit()
     {
-        _fsm.anim.SetBool("Hit", true);
-        
-        if(_fsm.player.GetComponent<FSMPlayerManager>().blocking == false)
-        {
-            _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
-            _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;   
-        }
-        else
-        {
-            _fsm.bloking = false;
-        }
-
+        _fsm.anim.SetBool("Hit", true); 
+        _fsm.StartCoroutine(WaitToPunch());
         _fsm.StartCoroutine(WaitTilt());
     }
 
@@ -90,5 +80,19 @@ public class Combat : TemplateStateMachineEnemies
     {
         yield return new WaitForSeconds(2f);
         _fsm.canPunchAgain = true;
+    }
+
+    IEnumerator WaitToPunch()
+    {
+        yield return new WaitForSeconds(_fsm.timeToPunch);
+        if(_fsm.player.GetComponent<FSMPlayerManager>().blocking == false )
+        {
+            _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
+            _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;
+        }
+        else
+        {
+            _fsm.bloking = false;
+        }  
     }
 }

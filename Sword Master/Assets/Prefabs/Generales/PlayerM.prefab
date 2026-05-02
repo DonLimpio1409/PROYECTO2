@@ -479,6 +479,26 @@ PrefabInstance:
       propertyPath: wayPointData
       value: 
       objectReference: {fileID: 11400000, guid: e9ff6e2fb89bad248b136133e825fd5b, type: 2}
+    - target: {fileID: 6757813655523326271, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: m_Height
+      value: 5.3071475
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757813655523326271, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: m_Radius
+      value: 0.7511807
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757813655523326271, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: m_Center.x
+      value: -0.020545946
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757813655523326271, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: m_Center.y
+      value: 1.7386013
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757813655523326271, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: m_Center.z
+      value: -0.017934052
+      objectReference: {fileID: 0}
     - target: {fileID: 8500111200446046233, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
       propertyPath: m_Constraints
       value: 122

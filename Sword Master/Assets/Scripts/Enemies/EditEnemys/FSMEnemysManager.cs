@@ -82,6 +82,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public Image img;
     public int rdn = 0;
     public int hitProbably = 2000;
+    public float timeToPunch = 0.5f;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -95,6 +96,8 @@ public class FSMEnemysManager : StateMachineFlowEnemies
         {
             upEnemy--;
             bloking = true;
+            anim.SetBool("Damage", true);
+            StartCoroutine(Wait());
         }
     }
 
@@ -105,5 +108,10 @@ public class FSMEnemysManager : StateMachineFlowEnemies
             goWaitCombat = true;
         }
     }
-}
 
+    IEnumerator Wait()
+    {
+        yield return new WaitForEndOfFrame();
+        anim.SetBool("Damage", false);
+    }
+}
