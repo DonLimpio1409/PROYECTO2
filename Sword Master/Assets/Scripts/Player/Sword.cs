@@ -22,10 +22,31 @@ public class Sword : MonoBehaviour
     public float blocktime = 0f;
     public float cooldonwBlock = 2f;
 
+    // ---------------- SWING RÁPIDO ----------------
+    private Quaternion lastRotation;
+    private float angularSpeed;
+
+    [Header("Fast Swing Settings")]
+    public float fastSwingThreshold = 500f;
+    public float extendAmount = 0.3f;
+    public float extendSmooth = 10f;
+    public GameObject trail;
+
+    private Vector3 normalLocalPos;
+
+    [Header("Rotation Limits")]
+    public float maxUp = 1f;
+    public float maxDown = 60f;
+    public float maxLeft = 100f;
+    public float maxRight = 100f;
+
 
     void Start()
     {
         initialHandPos = Hand.localPosition;
+        normalLocalPos = transform.localPosition;
+
+        lastRotation = transform.rotation;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -39,7 +60,12 @@ public class Sword : MonoBehaviour
         CheckCalibration();
 
         if (!blocking)
+        {
             mouseDir += mouseDelta * sensitivity;
+
+            mouseDir.x = Mathf.Clamp(mouseDir.x, -maxLeft, maxRight);
+            mouseDir.y = Mathf.Clamp(mouseDir.y, -maxUp, maxDown);
+        }
 
         UpdateHand();
         UpdateSword();
@@ -49,7 +75,7 @@ public class Sword : MonoBehaviour
 
     void CheckBlock()
     {
-        if (Input.GetMouseButtonDown(1) && cooldonwBlock <= 0f)
+        if (Input.GetMouseButton(1) && cooldonwBlock <= 0f)
         {
             blocking = true;
             cooldonwBlock = 1f; 
@@ -79,24 +105,30 @@ public class Sword : MonoBehaviour
     {
         if (blocking)
         {
-            // Mano congelada durante el bloqueo
             Hand.localPosition = Vector3.Lerp(Hand.localPosition, initialHandPos, Time.deltaTime * 10f);
-
             Hand.localRotation = Quaternion.Slerp(Hand.localRotation, Quaternion.identity, Time.deltaTime * 10f);
-
             return;
         }
 
-        // Sway normal
+        // Sway
         Vector3 sway = new Vector3(mouseDelta.x, mouseDelta.y, 0) * swayAmount;
         Vector3 targetPos = initialHandPos + sway;
 
         Hand.localPosition = Vector3.Lerp(Hand.localPosition, targetPos, Time.deltaTime * swaySmooth);
 
-        // Rotación estilo Wii
-        Quaternion targetRot = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
+        // ---------------- ROTACIÓN CORREGIDA ----------------
+        // El Player solo aporta rotación horizontal (Y)
+        float yaw = Hand.parent.rotation.eulerAngles.y;
 
-        Hand.localRotation = Quaternion.Slerp(Hand.localRotation, targetRot,Time.deltaTime * handSmooth);
+        Quaternion playerYaw = Quaternion.Euler(0, yaw, 0);
+        Quaternion handPitchYaw = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
+
+        // La mano ya NO hereda la inclinación vertical del Player
+        Hand.rotation = Quaternion.Slerp(
+            Hand.rotation,
+            playerYaw * handPitchYaw,
+            Time.deltaTime * handSmooth
+        );
     }
 
     // ---------------- ESPADA ----------------
@@ -105,7 +137,6 @@ public class Sword : MonoBehaviour
     {
         if (blocking)
         {
-            // Rotación de bloqueo RELATIVA a la mano (localRotation)
             Quaternion blockRot = Quaternion.Euler(0, 0, -90);
 
             transform.localRotation = Quaternion.Slerp(
@@ -114,13 +145,18 @@ public class Sword : MonoBehaviour
                 Time.deltaTime * 12f
             );
 
+            transform.localPosition = Vector3.Lerp(
+                transform.localPosition,
+                normalLocalPos,
+                Time.deltaTime * extendSmooth
+            );
+
             return;
         }
 
         // Movimiento normal estilo Wii Sports Resort
         swordTargetRot = Hand.rotation;
 
-        // Corrección para que el eje X de la espada mire hacia delante
         Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
 
         transform.rotation = Quaternion.Slerp(
@@ -128,6 +164,35 @@ public class Sword : MonoBehaviour
             corrected,
             Time.deltaTime / swordDelay
         );
+
+        // ---------------- CÁLCULO DE VELOCIDAD ANGULAR ----------------
+        Quaternion delta = transform.rotation * Quaternion.Inverse(lastRotation);
+
+        delta.ToAngleAxis(out float angle, out Vector3 axis);
+
+        if (angle > 180f) angle = 360f - angle;
+
+        angularSpeed = angle / Time.deltaTime;
+
+        lastRotation = transform.rotation;
+
+        // ---------------- EXTENSIÓN POR SWING RÁPIDO ----------------
+        Vector3 forwardLocal = transform.parent.InverseTransformDirection(Hand.parent.forward);
+
+        if (angularSpeed > fastSwingThreshold)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, normalLocalPos + forwardLocal.normalized * extendAmount, Time.deltaTime * extendSmooth);
+            trail.SetActive(true);
+        }
+        else
+        {
+            transform.localPosition = Vector3.Lerp(
+                transform.localPosition,
+                normalLocalPos,
+                Time.deltaTime * extendSmooth
+            );
+            trail.SetActive(false);
+        }
     }
 
     // ---------------- CALIBRACIÓN ----------------

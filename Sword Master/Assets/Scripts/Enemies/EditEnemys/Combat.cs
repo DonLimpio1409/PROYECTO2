@@ -21,7 +21,7 @@ public class Combat : TemplateStateMachineEnemies
         _fsm.anim.SetBool("Surprise", false);
 
         _fsm.canPunchAgain = true;
-        _fsm.bloking = true; 
+        _fsm.bloking = true;
     }
 
     public override void UpdateLogic()
@@ -89,6 +89,9 @@ public class Combat : TemplateStateMachineEnemies
         {
             _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
             _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;
+
+            _fsm.player.GetComponent<FSMPlayerManager>().lifeList.Dequeue();
+
         }
         else
         {

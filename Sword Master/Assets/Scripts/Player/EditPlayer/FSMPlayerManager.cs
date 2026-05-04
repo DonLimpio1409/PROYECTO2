@@ -21,6 +21,10 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         walkState = new Walk(this);
         fightState = new Fight(this);
         dieState = new Die(this);
+
+        lifeList.Enqueue(life1);
+        lifeList.Enqueue(life2);
+        lifeList.Enqueue(life3);
     }
     protected override void GetInitialState(out TemplateStateMachinePlayer _stateMachine)
     {
@@ -48,8 +52,15 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public List<GameObject> fightersList = new List<GameObject>();
     public GameObject cameraR;
     public int i = 0; 
-    public bool blocking;
+    public bool blocking = false;
+    public float cooldonwBlock = 2f;
+    public float blocktime = 0;
     public int hp = 3;
+    public Image lifeImage;
+    public Queue<Sprite> lifeList = new Queue<Sprite>();
+    public Sprite life1;
+    public Sprite life2;
+    public Sprite life3;
 
     public void OnCollisionEnter(Collision other)
     {

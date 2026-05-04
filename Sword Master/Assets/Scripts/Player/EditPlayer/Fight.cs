@@ -34,6 +34,7 @@ public class Fight : TemplateStateMachinePlayer
         Block();
 
         _fsm.livesText.text = "Vidas: " + _fsm.hp;
+        _fsm.lifeImage.sprite = _fsm.lifeList.Peek();
     }
 
     public override void UpdatePhysics()
@@ -43,13 +44,27 @@ public class Fight : TemplateStateMachinePlayer
 
     public void Block()
     {
-        if(Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && _fsm.cooldonwBlock <= 0f)
         {
             _fsm.blocking = true;
+            _fsm.cooldonwBlock = 1f; 
+        }
+        
+        if (_fsm.blocking)
+        {
+            _fsm.blocktime += Time.deltaTime;
+
+            if (_fsm.blocktime >= 0.5f)
+            {
+                _fsm.blocking = false;
+                _fsm.blocktime = 0f;
+                _fsm.cooldonwBlock = 1f;
+            }
         }
         else
         {
-            _fsm.blocking = false;
+            if (_fsm.cooldonwBlock > 0f)
+                _fsm.cooldonwBlock -= Time.deltaTime;
         }
     }
 
