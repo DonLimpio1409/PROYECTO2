@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -45,5 +46,10 @@ public class UIManager : MonoBehaviour
         current.SetActive(false);
 
         menuStack.Peek().SetActive(true);
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
     }
 }

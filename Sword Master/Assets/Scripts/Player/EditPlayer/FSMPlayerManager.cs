@@ -1,13 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using Mono.Cecil.Cil;
-using System;
-using Unity.VisualScripting;
 
 public class FSMPlayerManager : StateMachineFlowPlayer
 {

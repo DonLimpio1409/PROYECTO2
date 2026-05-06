@@ -1,9 +1,4 @@
-using Unity.Android.Gradle;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Fight : TemplateStateMachinePlayer
 {
