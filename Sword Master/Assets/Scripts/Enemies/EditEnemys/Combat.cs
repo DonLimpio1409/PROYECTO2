@@ -64,7 +64,7 @@ public class Combat : TemplateStateMachineEnemies
 
     public void Hit()
     {
-        _fsm.anim.SetBool("Hit", true); 
+        _fsm.anim.SetTrigger("Hitt"); 
         _fsm.StartCoroutine(WaitToPunch());
         _fsm.StartCoroutine(WaitTilt());
     }

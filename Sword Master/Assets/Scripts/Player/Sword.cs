@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
@@ -40,6 +41,9 @@ public class Sword : MonoBehaviour
     public float maxLeft = 100f;
     public float maxRight = 100f;
 
+    [Header("Otros")]
+    public Animator blueScreen;
+
 
     void Start()
     {
@@ -78,6 +82,7 @@ public class Sword : MonoBehaviour
         if (Input.GetMouseButton(1) && cooldonwBlock <= 0f)
         {
             blocking = true;
+            blueScreen.SetBool("Bloking", true);
             cooldonwBlock = 1f; 
         }
         
@@ -87,6 +92,7 @@ public class Sword : MonoBehaviour
 
             if (blocktime >= 0.5f)
             {
+                blueScreen.SetBool("Bloking", false);
                 blocking = false;
                 blocktime = 0f;
                 cooldonwBlock = 1f;
@@ -183,14 +189,11 @@ public class Sword : MonoBehaviour
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, normalLocalPos + forwardLocal.normalized * extendAmount, Time.deltaTime * extendSmooth);
             trail.SetActive(true);
+            SoundController.Instance.PlaySFX(SoundController.Instance.swingSound);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(
-                transform.localPosition,
-                normalLocalPos,
-                Time.deltaTime * extendSmooth
-            );
+            transform.localPosition = Vector3.Lerp(transform.localPosition, normalLocalPos, Time.deltaTime * extendSmooth);
             trail.SetActive(false);
         }
     }

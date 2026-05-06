@@ -1120,8 +1120,8 @@ MonoBehaviour:
   bloking: 0
   img: {fileID: 0}
   rdn: 0
-  hitProbably: 1000
-  timeToPunch: 0.5
+  hitProbably: 450
+  timeToPunch: 0.7
 --- !u!54 &8515623123194877183
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -15,13 +15,14 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public Walk walkState;
     public Fight fightState;
     public Die dieState;
+    public TutorialSta tutorialState;
 
     private void Awake()
     {
         walkState = new Walk(this);
         fightState = new Fight(this);
         dieState = new Die(this);
-
+        tutorialState = new TutorialSta(this);
         lifeList.Enqueue(life1);
         lifeList.Enqueue(life2);
         lifeList.Enqueue(life3);
@@ -29,7 +30,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     protected override void GetInitialState(out TemplateStateMachinePlayer _stateMachine)
     {
         // Definir el primer estado del que parte en la maquina
-        _stateMachine = walkState;
+        _stateMachine = tutorialState;
     }
 
     [Header("Elementos de uso")]
@@ -37,6 +38,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public Animator anim = new Animator();
     public TextMeshProUGUI livesText;
     public WayPointDataPlayer wayPointData;
+    public GameObject tutorialControl;
 
 
     [Header("Walk")]
