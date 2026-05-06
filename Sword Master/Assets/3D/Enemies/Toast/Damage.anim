@@ -70,7 +70,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.r
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -127,7 +127,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.g
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -184,7 +184,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.b
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -241,7 +241,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.a
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -254,7 +254,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 63607495
+      path: 2429296262
       attribute: 1136458424
       script: {fileID: 0}
       typeID: 137
@@ -263,7 +263,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 63607495
+      path: 2429296262
       attribute: 1404893880
       script: {fileID: 0}
       typeID: 137
@@ -272,7 +272,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 63607495
+      path: 2429296262
       attribute: 1673329336
       script: {fileID: 0}
       typeID: 137
@@ -281,7 +281,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 63607495
+      path: 2429296262
       attribute: 1941764792
       script: {fileID: 0}
       typeID: 137
@@ -364,7 +364,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.r
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -421,7 +421,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.g
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -478,7 +478,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.b
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -535,7 +535,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._BaseColor.a
-    path: Calabaza
+    path: Cube
     classID: 137
     script: {fileID: 0}
     flags: 0
