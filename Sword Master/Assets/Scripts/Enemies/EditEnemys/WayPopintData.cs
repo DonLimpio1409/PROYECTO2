@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WayPointData", menuName = "WayPointData/DataSet", order = 1)]
+[CreateAssetMenu(fileName = "WayPointDataEnemy", menuName = "WayPointData/DataSet", order = 1)]
 public class WayPopintData : ScriptableObject
 {
     [System.Serializable]

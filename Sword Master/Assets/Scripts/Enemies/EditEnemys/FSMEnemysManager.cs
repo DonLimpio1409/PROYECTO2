@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class FSMEnemysManager : StateMachineFlowEnemies
 {
@@ -31,7 +32,6 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     [Header("Elementos de uso")]
     public Rigidbody rb = new Rigidbody();
     public Animator anim = new Animator();
-    public TextMeshProUGUI stateNameT;
     public int upEnemy = 3;
 
     [Header("Animation")]
@@ -42,7 +42,8 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public bool goIdle;
     public bool changeWayPoint;
     public WayPopintData waypointData;
-    public float speed = 3;
+    public float walkSpeed = 3;
+    public float chaseSpeed = 3;
     public int currentWayPointIndex = 0;
     public int waitTimeR = 1;
     public GameObject waypoint1;
@@ -62,6 +63,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public Ray rayDetectorRightFD = new Ray();
     public Ray rayDetectorLeftBD = new Ray();
     public bool detected;
+    public GameObject origin;
 
     public RaycastHit hit;
     public float raysLength = 7f;
@@ -71,8 +73,16 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public GameObject player;
     public GameObject awayEnemies;
 
-    //WaitCombat
+    [Header("WaitCombat")]
     public bool greenLight;
+
+    [Header("Combat")]
+    public bool canPunchAgain;
+    public bool bloking = true;
+    public Image img;
+    public int rdn = 0;
+    public int hitProbably = 2000;
+    public float timeToPunch = 0.5f;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -82,9 +92,12 @@ public class FSMEnemysManager : StateMachineFlowEnemies
             goIdle = true;
         }
 
-        if(other.tag == "Sword")
+        if(other.tag == "Sword" && bloking == false)
         {
             upEnemy--;
+            bloking = true;
+            anim.SetBool("Damage", true);
+            StartCoroutine(Wait());
         }
     }
 
@@ -95,5 +108,10 @@ public class FSMEnemysManager : StateMachineFlowEnemies
             goWaitCombat = true;
         }
     }
-}
 
+    IEnumerator Wait()
+    {
+        yield return new WaitForEndOfFrame();
+        anim.SetBool("Damage", false);
+    }
+}
