@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 1839278202}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: hitProbably
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: waypointData
@@ -1084,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 1839278202}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: hitProbably
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: waypointData
@@ -1190,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: hitProbably
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: waypointData
@@ -1433,7 +1433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: hitProbably
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: waypointData
@@ -1721,7 +1721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: hitProbably
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: waypointData
@@ -2665,6 +2665,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1590237639, guid: 7c666dee4ce8d0d459a126c58da491e4, type: 3}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: lifeImage
       value: 
       objectReference: {fileID: 506888818}
@@ -3352,7 +3356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: hitProbably
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: waypointData
@@ -3739,7 +3743,7 @@ PrefabInstance:
       objectReference: {fileID: 124511111}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: rdn
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6590505767787071411, guid: 93434720050d9154983c301d83e3133e, type: 3}
       propertyPath: player
