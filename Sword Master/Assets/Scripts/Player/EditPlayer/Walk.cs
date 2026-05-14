@@ -1,8 +1,5 @@
-using System.Net.WebSockets;
-using Mono.Cecil.Cil;
-using UnityEditor.Callbacks;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class Walk : TemplateStateMachinePlayer
 {

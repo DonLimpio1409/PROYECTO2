@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Tutorial : MonoBehaviour
 {
     bool enterTutorial = false;
-    bool joke = true;
     public bool tutorialDone = false;
 
     public GameObject instruc1;

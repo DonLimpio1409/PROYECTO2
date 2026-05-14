@@ -1,13 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using Mono.Cecil.Cil;
-using System;
-using Unity.VisualScripting;
 
 public class FSMPlayerManager : StateMachineFlowPlayer
 {
@@ -30,7 +25,14 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     protected override void GetInitialState(out TemplateStateMachinePlayer _stateMachine)
     {
         // Definir el primer estado del que parte en la maquina
-        _stateMachine = tutorialState;
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            _stateMachine = tutorialState;
+        }
+        else
+        {
+            _stateMachine = walkState;
+        }
     }
 
     [Header("Elementos de uso")]
