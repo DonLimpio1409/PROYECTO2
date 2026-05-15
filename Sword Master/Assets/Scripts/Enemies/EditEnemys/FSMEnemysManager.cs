@@ -33,10 +33,12 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public Rigidbody rb = new Rigidbody();
     public Animator anim = new Animator();
     public int upEnemy = 3;
+    public GameObject rot;
 
     [Header("Animation")]
     public AnimatorStateInfo currentAnimation;
     public bool sen = false;
+    public float AnimMargin = 0.9f;
 
     [Header("Patrol")]
     public bool goIdle;

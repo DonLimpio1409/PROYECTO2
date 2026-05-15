@@ -43,10 +43,10 @@ public class Combat : TemplateStateMachineEnemies
     {
         base.UpdatePhysics();
         //Rotar
-        Vector3 direction = _fsm.player.transform.position - _fsm.transform.position;
+        Vector3 direction = _fsm.player.transform.position - _fsm.rot.transform.position;
         direction.y = 0f;
         Quaternion objective = Quaternion.LookRotation(-direction);
-        _fsm.transform.rotation = Quaternion.Lerp(_fsm.transform.rotation, objective, Time.deltaTime * 20f);
+        _fsm.rot.transform.rotation = Quaternion.Lerp(_fsm.rot.transform.rotation, objective, Time.deltaTime * 20f);
     }
 
     public void Die()

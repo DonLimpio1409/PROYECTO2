@@ -22,6 +22,7 @@ public class Tutorial : MonoBehaviour
         lifeList.Enqueue(instruc3);
         lifeList.Enqueue(instruc4);
         lifeList.Enqueue(instruc5);
+        SoundController.Instance.PlayMusic(SoundController.Instance.TutorialMusic);
     }
 
     // Update is called once per frame

@@ -130,11 +130,7 @@ public class Sword : MonoBehaviour
         Quaternion handPitchYaw = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
 
         // La mano ya NO hereda la inclinación vertical del Player
-        Hand.rotation = Quaternion.Slerp(
-            Hand.rotation,
-            playerYaw * handPitchYaw,
-            Time.deltaTime * handSmooth
-        );
+        Hand.rotation = Quaternion.Slerp(Hand.rotation,playerYaw * handPitchYaw,Time.deltaTime * handSmooth);
     }
 
     // ---------------- ESPADA ----------------
@@ -145,17 +141,9 @@ public class Sword : MonoBehaviour
         {
             Quaternion blockRot = Quaternion.Euler(0, 0, -90);
 
-            transform.localRotation = Quaternion.Slerp(
-                transform.localRotation,
-                blockRot,
-                Time.deltaTime * 12f
-            );
+            transform.localRotation = Quaternion.Slerp(transform.localRotation,blockRot,Time.deltaTime * 12f);
 
-            transform.localPosition = Vector3.Lerp(
-                transform.localPosition,
-                normalLocalPos,
-                Time.deltaTime * extendSmooth
-            );
+            transform.localPosition = Vector3.Lerp(transform.localPosition,normalLocalPos,Time.deltaTime * extendSmooth);
 
             return;
         }
@@ -165,11 +153,8 @@ public class Sword : MonoBehaviour
 
         Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
 
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            corrected,
-            Time.deltaTime / swordDelay
-        );
+        transform.rotation = Quaternion.Slerp(transform.rotation,corrected,Time.deltaTime / swordDelay
+);
 
         // ---------------- CÁLCULO DE VELOCIDAD ANGULAR ----------------
         Quaternion delta = transform.rotation * Quaternion.Inverse(lastRotation);

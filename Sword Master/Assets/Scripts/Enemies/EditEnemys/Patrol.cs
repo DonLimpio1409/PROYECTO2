@@ -73,10 +73,10 @@ public class Patrol : TemplateStateMachineEnemies
     public void MoveToPosition()
     {
         //Mover
-        _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, target.wayPointPosition, _fsm.walkSpeed * Time.deltaTime);
+        _fsm.rot.transform.position = Vector3.MoveTowards(_fsm.rot.transform.position, target.wayPointPosition, _fsm.walkSpeed * Time.deltaTime);
 
         //Rotar sin que se caiga
-        Vector3 direction = _fsm.transform.position - target.wayPointPosition;
+        Vector3 direction = _fsm.rot.transform.position - target.wayPointPosition;
         //direction.y = 0;
 
         if (direction != Vector3.zero)
@@ -89,7 +89,7 @@ public class Patrol : TemplateStateMachineEnemies
 
             rotation = Quaternion.Euler(euler);
 
-            _fsm.transform.rotation = Quaternion.Slerp(_fsm.transform.rotation, rotation, 3 * Time.deltaTime);
+            _fsm.rot.transform.rotation = Quaternion.Slerp(_fsm.rot.transform.rotation, rotation, 3 * Time.deltaTime);
         }
     }
 
