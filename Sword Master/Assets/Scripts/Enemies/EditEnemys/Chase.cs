@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ public class Chase : TemplateStateMachineEnemies
         _fsm.anim.SetBool("Chase", true);
         _fsm.goWaitCombat = false;
         //Activar animacion
+
+        _fsm.Exclamation.SetActive(true);
+        _fsm.StartCoroutine(ExclamationDuration());
     }
 
     public override void UpdateLogic()
@@ -48,5 +52,11 @@ public class Chase : TemplateStateMachineEnemies
             Debug.Log("Persiguiendo");
             _fsm.rot.transform.position = Vector3.MoveTowards(_fsm.rot.transform.position, _fsm.player.transform.position, _fsm.chaseSpeed * Time.deltaTime);
         }
+    }
+
+    IEnumerator ExclamationDuration()
+    {
+        yield return new WaitForSeconds(1f);
+        _fsm.Exclamation.SetActive(false);
     }
 }

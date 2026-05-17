@@ -18,6 +18,7 @@ public class SoundController : MonoBehaviour
 
     [Header("SFX")]
     public AudioClip swingSound;
+    public AudioClip DizzySound;
 
     
 

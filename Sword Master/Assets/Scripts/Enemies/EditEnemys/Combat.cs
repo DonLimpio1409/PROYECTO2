@@ -22,13 +22,14 @@ public class Combat : TemplateStateMachineEnemies
 
         _fsm.canPunchAgain = true;
         _fsm.bloking = true;
+        _fsm.Shield.SetActive(true);
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
         _fsm.rdn = Random.Range(0, _fsm.hitProbably);
-        if(_fsm.rdn == 0 && _fsm.canPunchAgain)
+        if(_fsm.rdn == 0 && _fsm.canPunchAgain && !_fsm.isStuned)
         {
             Debug.Log("Te pego");
             Hit();
@@ -97,6 +98,20 @@ public class Combat : TemplateStateMachineEnemies
         else
         {
             _fsm.bloking = false;
+            _fsm.isStuned = true;
+            _fsm.Shield.SetActive(false);
+            _fsm.Stun.SetActive(true);
+            SoundController.Instance.PlaySFX(SoundController.Instance.DizzySound);
+            _fsm.StartCoroutine(Stuned());
         }  
+    }
+
+    IEnumerator Stuned()
+    {
+        yield return new WaitForSeconds(1f);
+        _fsm.isStuned = false;
+        _fsm.Stun.SetActive(false);
+        _fsm.Shield.SetActive(true);
+        _fsm.bloking = true;
     }
 }
