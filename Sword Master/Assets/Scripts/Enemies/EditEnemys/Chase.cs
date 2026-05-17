@@ -46,7 +46,7 @@ public class Chase : TemplateStateMachineEnemies
         if (_fsm.sen)
         {
             Debug.Log("Persiguiendo");
-            _fsm.rot.transform.position = Vector3.MoveTowards(_fsm.rot.transform.position, _fsm.player.transform.position, _fsm.walkSpeed * Time.deltaTime);
+            _fsm.rot.transform.position = Vector3.MoveTowards(_fsm.rot.transform.position, _fsm.player.transform.position, _fsm.chaseSpeed * Time.deltaTime);
         }
     }
 }

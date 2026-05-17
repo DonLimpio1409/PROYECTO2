@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class FSMPlayerManager : StateMachineFlowPlayer
 {
@@ -51,6 +52,9 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public GameObject waypoint1;
     public GameObject waypoint2;
     public GameObject waypoint3;
+
+    [Header("Die")]
+    public GameObject dieMenu;
 
     [Header("Fight")]
     public List<GameObject> fightersList = new List<GameObject>();

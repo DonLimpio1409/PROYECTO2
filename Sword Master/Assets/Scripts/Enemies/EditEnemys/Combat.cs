@@ -89,6 +89,7 @@ public class Combat : TemplateStateMachineEnemies
         {
             _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
             _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;
+            _fsm.player.GetComponent<Animator>().SetTrigger("Hit");
 
             _fsm.player.GetComponent<FSMPlayerManager>().lifeList.Dequeue();
 

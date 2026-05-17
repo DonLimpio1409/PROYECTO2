@@ -12,6 +12,8 @@ public class Tutorial : MonoBehaviour
     public GameObject instruc3;
     public GameObject instruc4;
     public GameObject instruc5;
+    public GameObject instruc6;
+    public GameObject instruc7;
 
     Queue<GameObject> lifeList = new Queue<GameObject>();
 
@@ -22,6 +24,8 @@ public class Tutorial : MonoBehaviour
         lifeList.Enqueue(instruc3);
         lifeList.Enqueue(instruc4);
         lifeList.Enqueue(instruc5);
+        lifeList.Enqueue(instruc6);
+        lifeList.Enqueue(instruc7);
         SoundController.Instance.PlayMusic(SoundController.Instance.TutorialMusic);
     }
 
