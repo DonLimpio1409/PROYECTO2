@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TutorialSta : TemplateStateMachinePlayer
 {
     private FSMPlayerManager _fsm;
@@ -17,7 +17,14 @@ public class TutorialSta : TemplateStateMachinePlayer
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        if(_fsm.tutorialControl.GetComponent<Tutorial>().tutorialDone)
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if(_fsm.tutorialControl.GetComponent<Tutorial>().tutorialDone)
+            {
+                _fsm.ChangeState(_fsm.walkState);
+            }
+        }
+        else if (_fsm.tLevel1.GetComponent<TLevel1>().trialEndTutorial && Input.GetMouseButtonDown(0))
         {
             _fsm.ChangeState(_fsm.walkState);
         }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3077471b7554dc41b1b4b953f7d312d, type: 3}
-  m_Name: WayPointDataToast1
+  m_Name: WayPointDataToast 1
   m_EditorClassIdentifier: Assembly-CSharp::WayPopintData
   wayPointList:
-  - wayPointPosition: {x: -36.86966, y: -7.91, z: -36.07258}
+  - wayPointPosition: {x: -37.56966, y: -7.98, z: -26.28258}
     waitTime: 1
-  - wayPointPosition: {x: -22.79966, y: -7.91, z: -33.282578}
+  - wayPointPosition: {x: -19.52966, y: -7.91, z: -25.05258}
     waitTime: 1
-  - wayPointPosition: {x: -37.42966, y: -7.91, z: -25.12258}
+  - wayPointPosition: {x: -29.33966, y: -7.89, z: -33.47258}
     waitTime: 1

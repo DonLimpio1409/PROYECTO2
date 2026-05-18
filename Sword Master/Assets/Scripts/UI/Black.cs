@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Black : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class Black : MonoBehaviour
 
     IEnumerator Disapear()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
 

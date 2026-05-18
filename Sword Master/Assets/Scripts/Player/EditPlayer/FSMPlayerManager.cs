@@ -25,15 +25,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     }
     protected override void GetInitialState(out TemplateStateMachinePlayer _stateMachine)
     {
-        // Definir el primer estado del que parte en la maquina
-        if(SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            _stateMachine = tutorialState;
-        }
-        else
-        {
-            _stateMachine = walkState;
-        }
+        _stateMachine = tutorialState;
     }
 
     [Header("Elementos de uso")]
@@ -42,6 +34,8 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public TextMeshProUGUI livesText;
     public WayPointDataPlayer wayPointData;
     public GameObject tutorialControl;
+    public GameObject tLevel1;
+    public GameObject black;
 
 
     [Header("Walk")]
@@ -80,6 +74,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
         if(other.gameObject.CompareTag("Destiny"))
         {
+            black.GetComponent<Animator>().SetBool("In", true);
             int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(activeSceneIndex + 1);
         }
