@@ -54,5 +54,4 @@ public class Walk : TemplateStateMachinePlayer
             stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).fightState);
         }
     }  
-    
 }

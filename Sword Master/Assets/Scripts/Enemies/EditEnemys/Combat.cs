@@ -31,7 +31,6 @@ public class Combat : TemplateStateMachineEnemies
         _fsm.rdn = Random.Range(0, _fsm.hitProbably);
         if(_fsm.rdn == 0 && _fsm.canPunchAgain && !_fsm.isStuned)
         {
-            Debug.Log("Te pego");
             Hit();
             _fsm.canPunchAgain = false;
             _fsm.StartCoroutine(WaitToPunchAgain());

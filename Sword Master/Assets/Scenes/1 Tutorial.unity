@@ -3850,6 +3850,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: black
+      value: 
+      objectReference: {fileID: 5763878954562765504}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: life1
       value: 
       objectReference: {fileID: 1590237639, guid: 7c666dee4ce8d0d459a126c58da491e4, type: 3}
@@ -3865,6 +3869,10 @@ PrefabInstance:
       propertyPath: dieMenu
       value: 
       objectReference: {fileID: 1714082467}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: tLevel1
+      value: 
+      objectReference: {fileID: 2098041524}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: lifeImage
       value: 
@@ -4609,6 +4617,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93434720050d9154983c301d83e3133e, type: 3}
+--- !u!1 &2098041524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098041525}
+  m_Layer: 0
+  m_Name: T
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098041525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098041524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 101.4381, y: 0, z: -103.28348}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2106625001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,6 +5072,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7995465633313694128, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+      propertyPath: cursorClick
+      value: 
+      objectReference: {fileID: 2800000, guid: 8f1131b1e6355dc4dab33a51a02184d3, type: 3}
+    - target: {fileID: 7995465633313694128, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+      propertyPath: cursorNormal
+      value: 
+      objectReference: {fileID: 2800000, guid: c4bf10e809a84104ba2f55d84388f6c0, type: 3}
     - target: {fileID: 8316020398859694865, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 794
@@ -5351,3 +5398,4 @@ SceneRoots:
   - {fileID: 1012740575}
   - {fileID: 6345760936387522770}
   - {fileID: 1162633220}
+  - {fileID: 2098041525}

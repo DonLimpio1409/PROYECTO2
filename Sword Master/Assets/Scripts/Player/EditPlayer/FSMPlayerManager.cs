@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections; 
 using Unity.VisualScripting;
 
 public class FSMPlayerManager : StateMachineFlowPlayer
@@ -75,8 +76,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         if(other.gameObject.CompareTag("Destiny"))
         {
             black.GetComponent<Animator>().SetBool("In", true);
-            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(activeSceneIndex + 1);
+            StartCoroutine(PassScene());
         }
     }
 
@@ -95,5 +95,12 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         {
             exit = true;
         }
+    }
+
+    IEnumerator PassScene()
+    {
+        yield return new WaitForSeconds(1f);
+        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(activeSceneIndex + 1);
     }
 }

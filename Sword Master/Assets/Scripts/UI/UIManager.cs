@@ -53,7 +53,6 @@ public class UIManager : MonoBehaviour
     public void Play()
     {
         black.GetComponent<Animator>().SetBool("In", true);
-
         StartCoroutine(WaitTransition());
     }
 

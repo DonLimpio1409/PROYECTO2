@@ -23,6 +23,9 @@ public class Sword : MonoBehaviour
     public float blocktime = 0f;
     public float cooldonwBlock = 2f;
 
+    // Cooldown para evitar swing tras bloquear
+    private float swingLockTimer = 0f;
+
     // ---------------- SWING RÁPIDO ----------------
     private Quaternion lastRotation;
     private float angularSpeed;
@@ -60,6 +63,10 @@ public class Sword : MonoBehaviour
     {
         mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
+        // Reducir cooldown de swing
+        if (swingLockTimer > 0f)
+            swingLockTimer -= Time.deltaTime;
+
         CheckBlock();
         CheckCalibration();
 
@@ -96,6 +103,9 @@ public class Sword : MonoBehaviour
                 blocking = false;
                 blocktime = 0f;
                 cooldonwBlock = 1f;
+
+                // ACTIVAR COOLDOWN DE SWING
+                swingLockTimer = 0.2f;
             }
         }
         else
@@ -122,15 +132,13 @@ public class Sword : MonoBehaviour
 
         Hand.localPosition = Vector3.Lerp(Hand.localPosition, targetPos, Time.deltaTime * swaySmooth);
 
-        // ---------------- ROTACIÓN CORREGIDA ----------------
-        // El Player solo aporta rotación horizontal (Y)
+        // Rotación corregida
         float yaw = Hand.parent.rotation.eulerAngles.y;
 
         Quaternion playerYaw = Quaternion.Euler(0, yaw, 0);
         Quaternion handPitchYaw = Quaternion.Euler(-mouseDir.y, mouseDir.x, 0);
 
-        // La mano ya NO hereda la inclinación vertical del Player
-        Hand.rotation = Quaternion.Slerp(Hand.rotation,playerYaw * handPitchYaw,Time.deltaTime * handSmooth);
+        Hand.rotation = Quaternion.Slerp(Hand.rotation, playerYaw * handPitchYaw, Time.deltaTime * handSmooth);
     }
 
     // ---------------- ESPADA ----------------
@@ -141,9 +149,8 @@ public class Sword : MonoBehaviour
         {
             Quaternion blockRot = Quaternion.Euler(0, 0, -90);
 
-            transform.localRotation = Quaternion.Slerp(transform.localRotation,blockRot,Time.deltaTime * 12f);
-
-            transform.localPosition = Vector3.Lerp(transform.localPosition,normalLocalPos,Time.deltaTime * extendSmooth);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, blockRot, Time.deltaTime * 12f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, normalLocalPos, Time.deltaTime * extendSmooth);
 
             return;
         }
@@ -153,10 +160,9 @@ public class Sword : MonoBehaviour
 
         Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation,corrected,Time.deltaTime / swordDelay
-);
+        transform.rotation = Quaternion.Slerp(transform.rotation, corrected, Time.deltaTime / swordDelay);
 
-        // ---------------- CÁLCULO DE VELOCIDAD ANGULAR ----------------
+        // Cálculo de velocidad angular
         Quaternion delta = transform.rotation * Quaternion.Inverse(lastRotation);
 
         delta.ToAngleAxis(out float angle, out Vector3 axis);
@@ -167,18 +173,28 @@ public class Sword : MonoBehaviour
 
         lastRotation = transform.rotation;
 
-        // ---------------- EXTENSIÓN POR SWING RÁPIDO ----------------
+        // EXTENSIÓN POR SWING RÁPIDO
         Vector3 forwardLocal = transform.parent.InverseTransformDirection(Hand.parent.forward);
 
-        if (angularSpeed > fastSwingThreshold)
+        if (swingLockTimer <= 0f && angularSpeed > fastSwingThreshold)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, normalLocalPos + forwardLocal.normalized * extendAmount, Time.deltaTime * extendSmooth);
+            transform.localPosition = Vector3.Lerp(
+                transform.localPosition,
+                normalLocalPos + forwardLocal.normalized * extendAmount,
+                Time.deltaTime * extendSmooth
+            );
+
             trail.SetActive(true);
             SoundController.Instance.PlaySFX(SoundController.Instance.swingSound);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, normalLocalPos, Time.deltaTime * extendSmooth);
+            transform.localPosition = Vector3.Lerp(
+                transform.localPosition,
+                normalLocalPos,
+                Time.deltaTime * extendSmooth
+            );
+
             trail.SetActive(false);
         }
     }
