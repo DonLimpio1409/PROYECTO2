@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
-    
+    [SerializeField] private List<GameObject> settingsSubMenus;  
     private Stack<GameObject> menuStack = new Stack<GameObject>();
 
     void Start()
@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     {
         if (nextMenu == null) return;
 
+        if (menuStack.Count > 0 && menuStack.Peek() == nextMenu) return;
+
         if (menuStack.Count > 0)
         {
             menuStack.Peek().SetActive(false);
@@ -43,6 +45,16 @@ public class UIManager : MonoBehaviour
         current.SetActive(false);
 
         menuStack.Peek().SetActive(true);
+    }
+
+    public void OpenSubMenu(GameObject subMenuToOpen)
+    {
+        foreach (GameObject subMenu in settingsSubMenus)
+        {
+            subMenu.SetActive(false);
+        }
+        
+        subMenuToOpen.SetActive(true);
     }
 
     public void Play()
