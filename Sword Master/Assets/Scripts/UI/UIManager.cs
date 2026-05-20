@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,7 +12,21 @@ public class UIManager : MonoBehaviour
     
     public GameObject black;
     private Stack<GameObject> menuStack = new Stack<GameObject>();
+    public static UIManager Instance;
 
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     void Start()
     {
         PushMenu(mainMenu);
@@ -56,7 +71,6 @@ public class UIManager : MonoBehaviour
         {
             subMenu.SetActive(false);
         }
-        
         subMenuToOpen.SetActive(true);
     }
 

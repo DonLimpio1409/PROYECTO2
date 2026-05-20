@@ -5221,6 +5221,14 @@ PrefabInstance:
       propertyPath: DizzySound
       value: 
       objectReference: {fileID: 8300000, guid: 62b7f25812bb8cc4ebd5af667f667d64, type: 3}
+    - target: {fileID: 1460941230126291219, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7129879007134704007, guid: 5dcdb7af9fe4a22319619b051d1bdcbb, type: 2}
+    - target: {fileID: 6238542756101686842, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -6573360034410788543, guid: 5dcdb7af9fe4a22319619b051d1bdcbb, type: 2}
     - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -61.0849
