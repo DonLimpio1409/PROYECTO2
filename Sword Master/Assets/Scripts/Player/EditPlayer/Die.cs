@@ -13,9 +13,11 @@ public class Die : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
-        stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).walkState);
-        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(activeSceneIndex);
+        _fsm.dieMenu.SetActive(true);
+        stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).tutorialState);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public override void UpdateLogic()

@@ -856,7 +856,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9150943, g: 0.4871395, b: 0.25467247, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -920,7 +920,7 @@ Transform:
   m_GameObject: {fileID: 262555938}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 41, z: -54.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5522,7 +5522,7 @@ GameObject:
   - component: {fileID: 1858093089}
   - component: {fileID: 1858093088}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasPrincipalMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5605,6 +5605,7 @@ RectTransform:
   m_Children:
   - {fileID: 631476125}
   - {fileID: 815008857}
+  - {fileID: 451818838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6430,7 +6431,6 @@ SceneRoots:
   - {fileID: 262555940}
   - {fileID: 1858093091}
   - {fileID: 1374435290}
-  - {fileID: 1592076590}
   - {fileID: 286768112}
   - {fileID: 1694890385}
   - {fileID: 1358005602}

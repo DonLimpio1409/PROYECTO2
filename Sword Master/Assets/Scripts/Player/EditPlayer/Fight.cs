@@ -30,6 +30,11 @@ public class Fight : TemplateStateMachinePlayer
 
         _fsm.livesText.text = "Vidas: " + _fsm.hp;
         _fsm.lifeImage.sprite = _fsm.lifeList.Peek();
+
+        if(_fsm.lifeList.Count == 2)
+        {
+            _fsm.lifeImage.GetComponent<Animator>().SetTrigger("OneLive"); 
+        }
     }
 
     public override void UpdatePhysics()

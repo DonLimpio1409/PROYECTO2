@@ -12,9 +12,18 @@ public class Tutorial : MonoBehaviour
     public GameObject instruc3;
     public GameObject instruc4;
     public GameObject instruc5;
+    public GameObject instruc6;
+    public GameObject instruc7;
 
     Queue<GameObject> lifeList = new Queue<GameObject>();
+    bool trialEndTutorial;
+    public GameObject black;
+    public GameObject player;
 
+    void Awake()
+    {
+        black.GetComponent<Animator>().SetBool("Out", true);
+    }
     void Start()
     {
         lifeList.Enqueue(instruc1);
@@ -22,12 +31,18 @@ public class Tutorial : MonoBehaviour
         lifeList.Enqueue(instruc3);
         lifeList.Enqueue(instruc4);
         lifeList.Enqueue(instruc5);
-    }
+        lifeList.Enqueue(instruc6);
+        lifeList.Enqueue(instruc7);
+        SoundController.Instance.PlayMusic(SoundController.Instance.TutorialMusic);
 
-    // Update is called once per frame
+        StartCoroutine(WaitForScrollEnd());
+    }
     void Update()
     {
-        OnTutorial();
+        if(trialEndTutorial)
+        {
+            OnTutorial();
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -68,6 +83,20 @@ public class Tutorial : MonoBehaviour
                 tutorialDone = true;
             }
         }
+    }
+
+    public IEnumerator WaitAnimation()
+    {
+        yield return new WaitForSeconds(5f);
+        trialEndTutorial = true;
+    }
+
+    public IEnumerator WaitForScrollEnd()
+    {
+        yield return new WaitForSeconds(1.5f);
+        black.GetComponent<Animator>().SetBool("Out", false);
+        player.GetComponent<Animator>().SetBool("DoneTutorial", true);
+        StartCoroutine(WaitAnimation());
     }
 
 }

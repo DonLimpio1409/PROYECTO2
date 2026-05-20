@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class SoundController : MonoBehaviour
 {
@@ -12,8 +13,14 @@ public class SoundController : MonoBehaviour
     // Tiempo del último sonido reproducido
     private Dictionary<AudioClip, float> lastPlayTime = new Dictionary<AudioClip, float>();
 
+    [Header("Music")]
+    public AudioClip TutorialMusic;
+
     [Header("SFX")]
     public AudioClip swingSound;
+    public AudioClip DizzySound;
+
+    
 
     void Awake()
     {
@@ -36,5 +43,14 @@ public class SoundController : MonoBehaviour
 
         audioSource.PlayOneShot(clip);
         lastPlayTime[clip] = tiempoActual;
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        audioSource.clip = clip;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 }

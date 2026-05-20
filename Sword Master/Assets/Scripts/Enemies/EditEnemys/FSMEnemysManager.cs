@@ -33,10 +33,12 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public Rigidbody rb = new Rigidbody();
     public Animator anim = new Animator();
     public int upEnemy = 3;
+    public GameObject rot;
 
     [Header("Animation")]
     public AnimatorStateInfo currentAnimation;
     public bool sen = false;
+    public float AnimMargin = 0.9f;
 
     [Header("Patrol")]
     public bool goIdle;
@@ -72,6 +74,9 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public bool goWaitCombat;
     public GameObject player;
     public GameObject awayEnemies;
+    public GameObject Exclamation;
+    public GameObject Shield;
+    public GameObject Stun;
 
     [Header("WaitCombat")]
     public bool greenLight;
@@ -83,6 +88,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public int rdn = 0;
     public int hitProbably = 2000;
     public float timeToPunch = 0.5f;
+    public bool isStuned;
 
     public void OnTriggerEnter(Collider other)
     {

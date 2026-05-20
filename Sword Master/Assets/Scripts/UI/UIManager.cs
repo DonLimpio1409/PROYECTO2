@@ -2,11 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private List<GameObject> settingsSubMenus;  
+    
+    public GameObject black;
     private Stack<GameObject> menuStack = new Stack<GameObject>();
 
     void Start()
@@ -59,11 +62,18 @@ public class UIManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        black.GetComponent<Animator>().SetBool("In", true);
+        StartCoroutine(WaitTransition());
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+    IEnumerator WaitTransition()
+    {
+        yield return new WaitForSeconds(2f);
+        black.GetComponent<Animator>().SetBool("In", false);
+        SceneManager.LoadScene(1);
     }
 }

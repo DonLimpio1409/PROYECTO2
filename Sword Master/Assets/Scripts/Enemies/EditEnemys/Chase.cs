@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Chase : TemplateStateMachineEnemies
@@ -16,6 +18,9 @@ public class Chase : TemplateStateMachineEnemies
         _fsm.anim.SetBool("Chase", true);
         _fsm.goWaitCombat = false;
         //Activar animacion
+
+        _fsm.Exclamation.SetActive(true);
+        _fsm.StartCoroutine(ExclamationDuration());
     }
 
     public override void UpdateLogic()
@@ -30,21 +35,27 @@ public class Chase : TemplateStateMachineEnemies
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        Vector3 direction = _fsm.player.transform.position - _fsm.transform.position;
+        Vector3 direction = _fsm.player.transform.position - _fsm.rot.transform.position;
         direction.y = 0f;
         Quaternion objective = Quaternion.LookRotation(-direction);
 
-        _fsm.transform.rotation = Quaternion.Lerp(_fsm.transform.rotation, objective, Time.deltaTime * 20f);
+        _fsm.rot.transform.rotation = Quaternion.Lerp(_fsm.rot.transform.rotation, objective, Time.deltaTime * 20f);
 
         _fsm.currentAnimation = _fsm.anim.GetCurrentAnimatorStateInfo(0);
         //Se espera a que termine la animacion de sorpresa y lo persigue.
-        if(_fsm.currentAnimation.IsName("Surprise") && _fsm.currentAnimation.normalizedTime >= 0.9f)
+        if(_fsm.currentAnimation.IsName("Surprise") && _fsm.currentAnimation.normalizedTime >= _fsm.AnimMargin)
         {
             _fsm.sen = true;
         }
         if (_fsm.sen)
         {
-            _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.player.transform.position, _fsm.chaseSpeed * Time.deltaTime);
+            _fsm.rot.transform.position = Vector3.MoveTowards(_fsm.rot.transform.position, _fsm.player.transform.position, _fsm.chaseSpeed * Time.deltaTime);
         }
+    }
+
+    IEnumerator ExclamationDuration()
+    {
+        yield return new WaitForSeconds(1f);
+        _fsm.Exclamation.SetActive(false);
     }
 }
