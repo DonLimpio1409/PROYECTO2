@@ -12,20 +12,6 @@ public class UIManager : MonoBehaviour
     
     public GameObject black;
     private Stack<GameObject> menuStack = new Stack<GameObject>();
-    public static UIManager Instance;
-
-    void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
     
     void Start()
     {
@@ -76,6 +62,7 @@ public class UIManager : MonoBehaviour
 
     public void Play()
     {
+        StopCoroutine(WaitTransition());
         black.GetComponent<Animator>().SetBool("In", true);
         StartCoroutine(WaitTransition());
     }
@@ -86,7 +73,9 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator WaitTransition()
     {
+        Debug.Log("Culo limpio");
         yield return new WaitForSeconds(2f);
+        Debug.Log("Culo sucio");
         black.GetComponent<Animator>().SetBool("In", false);
         SceneManager.LoadScene(1);
     }
