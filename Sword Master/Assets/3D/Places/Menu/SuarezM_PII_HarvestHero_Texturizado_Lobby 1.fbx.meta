@@ -3,7 +3,112 @@ guid: d31221aacac4b634a86234a6fdbaa9db
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha01
+    second: {fileID: 2100000, guid: ad046ca5e5211e148a32c182f7e3878e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha02
+    second: {fileID: 2100000, guid: 08bf5de368647cc498d4fe61d24f8465, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha03
+    second: {fileID: 2100000, guid: 8c431e0aedb0aa44fb618fb43dffd62d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha04
+    second: {fileID: 2100000, guid: a80ce83792cb10f42b39a76b2b2d097c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha05
+    second: {fileID: 2100000, guid: 87936d17d2daa6447a5f03d04f11bf6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha_UV8
+    second: {fileID: 2100000, guid: 89247d2a26e5d5f449de529a264fa03c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha_UV9
+    second: {fileID: 2100000, guid: 0cdbe38f3866819459d1ecc0dc072bca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_Alpha02
+    second: {fileID: 2100000, guid: ae855581116461e449fc40dc06a91eb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_Alpha03
+    second: {fileID: 2100000, guid: 098061d3fe12a5e4ea430484732812c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_Alpha04
+    second: {fileID: 2100000, guid: cbb662dc399a8f240b0b511042b3d036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_Alpha05
+    second: {fileID: 2100000, guid: 53b87c3bad21f744b92818b15cd31bc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_Alpha_UV8
+    second: {fileID: 2100000, guid: d2195656c7bdd8a47aa8f1a1f97173ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_Alpha_UV9
+    second: {fileID: 2100000, guid: ca353e3a29bd93949b9201daf7ab09ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NO_alpha01
+    second: {fileID: 2100000, guid: c1968560acb986443a3ce5a95df9c956, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV10_Lobby
+    second: {fileID: 2100000, guid: f42b91f4a0a3d0d4d9959a7340aadc46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv1Lobby
+    second: {fileID: 2100000, guid: c5b02514e19782e468b05cf5ae0fe999, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv2Lobby
+    second: {fileID: 2100000, guid: 54cf20209b5ce0945b8ca93447e8ae8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv3Pajaro
+    second: {fileID: 2100000, guid: 1974bc3ae3ef8da4f94f0cd315930eab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv5Lobby
+    second: {fileID: 2100000, guid: a6a46cba9af010b42bacb3e8d572c814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv6Lobby
+    second: {fileID: 2100000, guid: 691858474dfb924469b4a0ca08b4f4f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uv7Lobby
+    second: {fileID: 2100000, guid: 9d7d354da837d5a49bc7d3620de4cd81, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
