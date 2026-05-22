@@ -5,7 +5,8 @@ using Unity.VisualScripting;
 public class SoundController : MonoBehaviour
 {
     public static SoundController Instance;
-    public AudioSource audioSource;
+    public AudioSource SFXAudioSource;
+    public AudioSource musicAudioSource;
 
     // Cooldown general para evitar spam
     public float globalCooldown = 0.05f;
@@ -41,7 +42,7 @@ public class SoundController : MonoBehaviour
         if (tiempoActual - lastPlayTime[clip] < globalCooldown)
             return;
 
-        audioSource.PlayOneShot(clip);
+        SFXAudioSource.PlayOneShot(clip);
         lastPlayTime[clip] = tiempoActual;
     }
 
@@ -49,8 +50,8 @@ public class SoundController : MonoBehaviour
     {
         if (clip == null) return;
 
-        audioSource.clip = clip;
-        audioSource.loop = true;
-        audioSource.Play();
+        musicAudioSource.clip = clip;
+        musicAudioSource.loop = true;
+        musicAudioSource.Play();
     }
 }

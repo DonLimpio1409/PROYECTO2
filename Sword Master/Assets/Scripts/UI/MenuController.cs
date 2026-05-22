@@ -1,15 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
     public GameObject pausaMenu;
+    public Animator upPause;
+    public Animator downPause;
+    int timesInMenu;
     void Update()
     {
         AperarMenuPausa();
     }
     public void ReStartLevel()
     {
+        Time.timeScale = 1;
         int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneIndex);
     }
@@ -21,24 +26,42 @@ public class MenuController : MonoBehaviour
     public void TurnToMainMenu()
     {
         SceneManager.LoadScene(0);
+
     }
 
     public void ResumeGame()
     {
-        pausaMenu.SetActive(false);
+        Debug.Log("Despause");
+        StartCoroutine(WaitToGoDown());
+        downPause.GetComponent<Animator>().SetBool("In", false);
+        upPause.GetComponent<Animator>().SetBool("In", false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Time.timeScale = 1;
     }
 
     void AperarMenuPausa()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && timesInMenu == 0)
         {
-            pausaMenu.SetActive(true);
+            StartCoroutine(WaitToStopUp());
+            upPause.GetComponent<Animator>().SetBool("In", true);
+            downPause.GetComponent<Animator>().SetBool("In", true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = 0;
         }
+    }
+
+    IEnumerator WaitToStopUp()
+    {
+        timesInMenu = 1;
+        yield return new WaitForSeconds(0.85f);
+        Time.timeScale = 0;
+    }
+    IEnumerator WaitToGoDown()
+    {
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(0.85f);
+        Debug.Log("Coorutine");
+        timesInMenu = 0;
     }
 }
