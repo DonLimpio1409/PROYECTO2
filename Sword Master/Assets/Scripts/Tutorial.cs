@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
     bool enterTutorial = false;
     public bool tutorialDone = false;
 
+    [Header("Instrucs Tutorial")]
     public GameObject instruc1;
     public GameObject instruc2;
     public GameObject instruc3;
@@ -15,10 +16,11 @@ public class Tutorial : MonoBehaviour
     public GameObject instruc6;
     public GameObject instruc7;
 
-    Queue<GameObject> lifeList = new Queue<GameObject>();
+    Queue<GameObject> tutorialList = new Queue<GameObject>();
     bool trialEndTutorial;
     public GameObject black;
     public GameObject player;
+    public GameObject sword;
 
     void Awake()
     {
@@ -26,13 +28,13 @@ public class Tutorial : MonoBehaviour
     }
     void Start()
     {
-        lifeList.Enqueue(instruc1);
-        lifeList.Enqueue(instruc2); 
-        lifeList.Enqueue(instruc3);
-        lifeList.Enqueue(instruc4);
-        lifeList.Enqueue(instruc5);
-        lifeList.Enqueue(instruc6);
-        lifeList.Enqueue(instruc7);
+        tutorialList.Enqueue(instruc1);
+        tutorialList.Enqueue(instruc2); 
+        tutorialList.Enqueue(instruc3);
+        tutorialList.Enqueue(instruc4);
+        tutorialList.Enqueue(instruc5);
+        tutorialList.Enqueue(instruc6);
+        tutorialList.Enqueue(instruc7);
         SoundController.Instance.PlayMusic(SoundController.Instance.TutorialMusic);
 
         StartCoroutine(WaitForScrollEnd());
@@ -42,6 +44,14 @@ public class Tutorial : MonoBehaviour
         if(trialEndTutorial)
         {
             OnTutorial();
+        }
+        if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+        {
+            tutorialDone = true;   
+        }
+        if(tutorialDone && tutorialList.Count > 0)
+        {
+            tutorialList.Peek().SetActive(false);
         }
     }
 
@@ -58,25 +68,25 @@ public class Tutorial : MonoBehaviour
         if (!enterTutorial) return;
 
         // Si es la primera vez, activa el primer elemento
-        if (lifeList.Count > 0 && !lifeList.Peek().activeSelf)
+        if (tutorialList.Count > 0 && !tutorialList.Peek().activeSelf)
         {
-            lifeList.Peek().SetActive(true);
+            tutorialList.Peek().SetActive(true);
         }
 
         // Avanzar al siguiente paso
         if (Input.GetMouseButtonDown(0))
         {
-            if (lifeList.Count > 0)
+            if (tutorialList.Count > 0)
             {
                 // Apagar el actual
-                lifeList.Peek().SetActive(false);
-                lifeList.Dequeue();
+                tutorialList.Peek().SetActive(false);
+                tutorialList.Dequeue();
             }
 
             // Encender el siguiente si existe
-            if (lifeList.Count > 0)
+            if (tutorialList.Count > 0)
             {
-                lifeList.Peek().SetActive(true);
+                tutorialList.Peek().SetActive(true);
             }
             else
             {
@@ -87,7 +97,9 @@ public class Tutorial : MonoBehaviour
 
     public IEnumerator WaitAnimation()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
+        sword.SetActive(true);
+        yield return new WaitForSeconds(1f);
         trialEndTutorial = true;
     }
 

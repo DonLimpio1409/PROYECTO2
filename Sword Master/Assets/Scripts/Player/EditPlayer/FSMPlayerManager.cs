@@ -50,6 +50,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
     [Header("Die")]
     public GameObject dieMenu;
+    public Animator redDie;
 
     [Header("Fight")]
     public List<GameObject> fightersList = new List<GameObject>();

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; 
 using UnityEngine.SceneManagement;
 
 public class Die : TemplateStateMachinePlayer
@@ -13,22 +14,17 @@ public class Die : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
+        _fsm.redDie.SetBool("Die", true);
+        _fsm.StartCoroutine(StopTime());
         _fsm.dieMenu.SetActive(true);
         stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).tutorialState);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
     }
 
-    public override void UpdateLogic()
+    IEnumerator StopTime()
     {
-        base.UpdateLogic();
-        //Lógica de persecución
-    }
-
-    public override void UpdatePhysics()
-    {
-        base.UpdatePhysics();
-        //Movimiento de persecución
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0;
     }
 }
