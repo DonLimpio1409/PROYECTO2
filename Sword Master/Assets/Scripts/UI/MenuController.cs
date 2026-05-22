@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public GameObject pausaMenu;
+    public GameObject fondPause;    
     public Animator upPause;
     public Animator downPause;
     int timesInMenu;
@@ -33,6 +34,7 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Despause");
         StartCoroutine(WaitToGoDown());
+        fondPause.SetActive(false);
         downPause.GetComponent<Animator>().SetBool("In", false);
         upPause.GetComponent<Animator>().SetBool("In", false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,6 +46,7 @@ public class MenuController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape) && timesInMenu == 0)
         {
             StartCoroutine(WaitToStopUp());
+            fondPause.SetActive(true);
             upPause.GetComponent<Animator>().SetBool("In", true);
             downPause.GetComponent<Animator>().SetBool("In", true);
             Cursor.lockState = CursorLockMode.None;
@@ -61,7 +64,7 @@ public class MenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         yield return new WaitForSeconds(0.85f);
-        Debug.Log("Coorutine");
+        //Debug.Log("Coorutine");
         timesInMenu = 0;
     }
 }

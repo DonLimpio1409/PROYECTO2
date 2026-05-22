@@ -913,6 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tutorial
   tutorialDone: 0
+  lvl1PresentationDone: 0
   instruc1: {fileID: 975427511}
   instruc2: {fileID: 1567552032}
   instruc3: {fileID: 2106625001}
@@ -1774,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9020019926119812733, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

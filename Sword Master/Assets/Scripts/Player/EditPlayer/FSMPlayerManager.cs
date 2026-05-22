@@ -35,7 +35,6 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public TextMeshProUGUI livesText;
     public WayPointDataPlayer wayPointData;
     public GameObject tutorialControl;
-    public GameObject tLevel1;
     public GameObject black;
 
 

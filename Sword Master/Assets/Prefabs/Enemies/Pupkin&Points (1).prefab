@@ -1641,7 +1641,7 @@ MonoBehaviour:
   stateName: {fileID: 0}
   rb: {fileID: 8515623123194877183}
   anim: {fileID: 5047238756739818148}
-  upEnemy: 3
+  upEnemy: 2
   rot: {fileID: 744412918213001915}
   sen: 0
   AnimMargin: 0.9

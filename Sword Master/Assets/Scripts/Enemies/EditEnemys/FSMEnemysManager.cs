@@ -118,6 +118,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     IEnumerator Wait()
     {
         yield return new WaitForEndOfFrame();
+        Debug.Log("DamageFalse");
         anim.SetBool("Damage", false);
     }
 }

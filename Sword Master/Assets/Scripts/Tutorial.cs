@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
-    bool enterTutorial = false;
     public bool tutorialDone = false;
+    public bool lvl1PresentationDone = false;
 
     [Header("Instrucs Tutorial")]
     public GameObject instruc1;
@@ -25,65 +26,88 @@ public class Tutorial : MonoBehaviour
     void Awake()
     {
         black.GetComponent<Animator>().SetBool("Out", true);
+        sword.SetActive(false);
     }
     void Start()
     {
-        tutorialList.Enqueue(instruc1);
-        tutorialList.Enqueue(instruc2); 
-        tutorialList.Enqueue(instruc3);
-        tutorialList.Enqueue(instruc4);
-        tutorialList.Enqueue(instruc5);
-        tutorialList.Enqueue(instruc6);
-        tutorialList.Enqueue(instruc7);
-        SoundController.Instance.PlayMusic(SoundController.Instance.TutorialMusic);
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "1 Tutorial":
+                tutorialList.Enqueue(instruc1);
+                tutorialList.Enqueue(instruc2); 
+                tutorialList.Enqueue(instruc3);
+                tutorialList.Enqueue(instruc4);
+                tutorialList.Enqueue(instruc5);
+                tutorialList.Enqueue(instruc6);
+                tutorialList.Enqueue(instruc7);
+                SoundController.Instance.PlayMusic(SoundController.Instance.TutorialMusic);
 
-        StartCoroutine(WaitForScrollEnd());
+                StartCoroutine(WaitForScrollEndTutorial());
+            break;
+
+            case "2 Level 1":
+                tutorialList.Enqueue(instruc1);
+                //SoundController.Instance.PlayMusic(SoundController.Instance.Level1Music);
+                StartCoroutine(WaitForScrollEndLevel1());
+            break;
+        }
     }
     void Update()
     {
-        if(trialEndTutorial)
+        switch (SceneManager.GetActiveScene().name)
         {
-            OnTutorial();
-        }
-        if(Input.GetMouseButtonDown(1) && trialEndTutorial)
-        {
-            tutorialDone = true;   
-        }
-        if(tutorialDone && tutorialList.Count > 0)
-        {
-            tutorialList.Peek().SetActive(false);
+            case "1 Tutorial":
+                if(trialEndTutorial)
+                {
+                    OnTutorial();
+                }
+                if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+                {
+                    tutorialDone = true;   
+                }
+                if(tutorialDone && tutorialList.Count > 0)
+                {
+                    tutorialList.Peek().SetActive(false);
+                }
+            break;
+
+            case "2 Level 1":
+                if(trialEndTutorial)
+                {
+                    OnTutorial();
+                }
+                if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+                {
+                    lvl1PresentationDone = true;   
+                }
+                if(lvl1PresentationDone && tutorialList.Count > 0)
+                {
+                    tutorialList.Peek().SetActive(false);
+                }
+
+                if(trialEndTutorial && Input.GetMouseButtonDown(0))
+                {
+                    player.GetComponent<Animator>().SetBool("DoneLevel1", false);
+                    lvl1PresentationDone = true;
+                }
+            break;
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            enterTutorial = true;
-        }
-    } 
-
     void OnTutorial()
     {
-        if (!enterTutorial) return;
-
-        // Si es la primera vez, activa el primer elemento
         if (tutorialList.Count > 0 && !tutorialList.Peek().activeSelf)
         {
             tutorialList.Peek().SetActive(true);
         }
-
-        // Avanzar al siguiente paso
         if (Input.GetMouseButtonDown(0))
         {
             if (tutorialList.Count > 0)
             {
-                // Apagar el actual
                 tutorialList.Peek().SetActive(false);
                 tutorialList.Dequeue();
             }
 
-            // Encender el siguiente si existe
             if (tutorialList.Count > 0)
             {
                 tutorialList.Peek().SetActive(true);
@@ -91,24 +115,38 @@ public class Tutorial : MonoBehaviour
             else
             {
                 tutorialDone = true;
+                lvl1PresentationDone = true;
             }
         }
     }
 
-    public IEnumerator WaitAnimation()
+    public IEnumerator WaitAnimationTutorial()
     {
         yield return new WaitForSeconds(4f);
         sword.SetActive(true);
         yield return new WaitForSeconds(1f);
         trialEndTutorial = true;
     }
+    public IEnumerator WaitAnimationLevel1()
+    {
+        yield return new WaitForSeconds(8.3f);
+        sword.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        trialEndTutorial = true;
+    }
 
-    public IEnumerator WaitForScrollEnd()
+    public IEnumerator WaitForScrollEndTutorial()
     {
         yield return new WaitForSeconds(1.5f);
         black.GetComponent<Animator>().SetBool("Out", false);
         player.GetComponent<Animator>().SetBool("DoneTutorial", true);
-        StartCoroutine(WaitAnimation());
+        StartCoroutine(WaitAnimationTutorial());
     }
-
+    public IEnumerator WaitForScrollEndLevel1()
+    {
+        yield return new WaitForSeconds(1.5f);
+        black.GetComponent<Animator>().SetBool("Out", false);
+        player.GetComponent<Animator>().SetBool("DoneLevel1", true);
+        StartCoroutine(WaitAnimationLevel1());
+    }
 }
