@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using JetBrains.Annotations;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,14 +15,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         PushMenu(mainMenu);
-    }
-
-    void Update() 
-    {
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            PopMenu();
-        }
     }
 
     public void PushMenu(GameObject nextMenu)
@@ -77,6 +68,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Debug.Log("Culo sucio");
         black.GetComponent<Animator>().SetBool("In", false);
+        DOTween.KillAll();
         SceneManager.LoadScene(1);
     }
 }
