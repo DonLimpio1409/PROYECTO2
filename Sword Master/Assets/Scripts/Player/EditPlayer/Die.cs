@@ -14,6 +14,8 @@ public class Die : TemplateStateMachinePlayer
     public override void Enter()
     {
         base.Enter();
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
+        SoundController.Instance.footstepAudioSource.Stop();
         _fsm.redDie.SetBool("Die", true);
         _fsm.StartCoroutine(StopTime());
         _fsm.dieMenu.SetActive(true);

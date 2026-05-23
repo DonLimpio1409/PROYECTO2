@@ -16,6 +16,7 @@ public class Walk : TemplateStateMachinePlayer
         _fsm.exit = true;  
         _fsm.anim.SetBool("Walk", true);
         _fsm.enemyBlock = false;
+        SoundController.Instance.DecideFootstepSound();
     }
 
     public override void UpdateLogic()

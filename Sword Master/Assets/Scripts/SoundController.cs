@@ -1,12 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 
 public class SoundController : MonoBehaviour
 {
     public static SoundController Instance;
+
+    [Header("AudioSources")]
     public AudioSource SFXAudioSource;
     public AudioSource musicAudioSource;
+    public AudioSource footstepAudioSource;
 
     // Cooldown general para evitar spam
     public float globalCooldown = 0.05f;
@@ -19,9 +23,16 @@ public class SoundController : MonoBehaviour
 
     [Header("SFX")]
     public AudioClip swingSound;
-    public AudioClip DizzySound;
-
-    
+    public AudioClip dizzySound;
+    public AudioClip buttonIn;
+    public AudioClip buttonOut;
+    public AudioClip parryAtZan;
+    public AudioClip landSteps;
+    public AudioClip roadSteps;
+    public AudioClip flatSteps;
+    public AudioClip parryAtEnemy;
+    public AudioClip getHitted;
+    public AudioClip hitEnemy;
 
     void Awake()
     {
@@ -53,5 +64,28 @@ public class SoundController : MonoBehaviour
         musicAudioSource.clip = clip;
         musicAudioSource.loop = true;
         musicAudioSource.Play();
+    }
+
+    public void Playfootstep(AudioClip clip)
+    {
+        if (clip == null) return;
+        footstepAudioSource.clip = clip;
+        footstepAudioSource.Play();
+    }
+
+    public void DecideFootstepSound()
+    {
+        if(SceneManager.GetActiveScene().name == "1 Tutorial")
+        {
+            Playfootstep(landSteps);
+        }
+        else if(SceneManager.GetActiveScene().name == "2 Level 1")
+        {
+            Playfootstep(flatSteps);
+        }
+        else if(SceneManager.GetActiveScene().name == "3 Level 2")
+        {
+            Playfootstep(roadSteps);
+        }
     }
 }

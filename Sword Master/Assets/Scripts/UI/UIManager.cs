@@ -10,11 +10,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> settingsSubMenus;  
     
     public GameObject black;
+    public GameObject tempBlack;
     private Stack<GameObject> menuStack = new Stack<GameObject>();
     
     void Start()
     {
         PushMenu(mainMenu);
+        StartCoroutine(WaitToTransition());
     }
 
     public void PushMenu(GameObject nextMenu)
@@ -69,6 +71,13 @@ public class UIManager : MonoBehaviour
         Debug.Log("Culo sucio");
         black.GetComponent<Animator>().SetBool("In", false);
         DOTween.KillAll();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
+    }
+
+    public IEnumerator WaitToTransition()
+    {
+        black.GetComponent<Animator>().SetBool("Out", true);
+        yield return new WaitForSeconds(1.2f);
+        tempBlack.SetActive(false);
     }
 }

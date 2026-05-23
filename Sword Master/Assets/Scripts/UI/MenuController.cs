@@ -21,18 +21,21 @@ public class MenuController : MonoBehaviour
     }
     public void ExitGame()
     {
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonOut);
         Application.Quit();
     }
 
     public void TurnToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonOut);
+        SceneManager.LoadScene(1);
 
     }
 
     public void ResumeGame()
     {
-        Debug.Log("Despause");
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonOut);
+        SoundController.Instance.DecideFootstepSound();
         StartCoroutine(WaitToGoDown());
         fondPause.SetActive(false);
         downPause.GetComponent<Animator>().SetBool("In", false);
@@ -45,6 +48,8 @@ public class MenuController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape) && timesInMenu == 0)
         {
+            SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
+            SoundController.Instance.footstepAudioSource.Stop();
             StartCoroutine(WaitToStopUp());
             fondPause.SetActive(true);
             upPause.GetComponent<Animator>().SetBool("In", true);
@@ -64,7 +69,6 @@ public class MenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         yield return new WaitForSeconds(0.85f);
-        //Debug.Log("Coorutine");
         timesInMenu = 0;
     }
 }

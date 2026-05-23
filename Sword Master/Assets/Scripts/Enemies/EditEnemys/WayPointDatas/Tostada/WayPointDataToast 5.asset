@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3077471b7554dc41b1b4b953f7d312d, type: 3}
+  m_Name: WayPointDataToast 5
+  m_EditorClassIdentifier: Assembly-CSharp::WayPopintData
+  wayPointList:
+  - wayPointPosition: {x: -29.57666, y: -6.738, z: -88.31258}
+    waitTime: 1
+  - wayPointPosition: {x: -31.34966, y: -6.805, z: -89.53258}
+    waitTime: 1
+  - wayPointPosition: {x: -33.829662, y: -6.96, z: -70.82258}
+    waitTime: 1

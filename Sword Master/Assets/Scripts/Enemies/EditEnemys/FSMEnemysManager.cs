@@ -92,18 +92,23 @@ public class FSMEnemysManager : StateMachineFlowEnemies
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "WayPoint")
-        {
-            changeWayPoint = true;
-            goIdle = true;
-        }
-
         if(other.tag == "Sword" && bloking == false)
         {
+            SoundController.Instance.PlaySFX(SoundController.Instance.hitEnemy);
             upEnemy--;
             bloking = true;
             anim.SetBool("Damage", true);
             StartCoroutine(Wait());
+        }
+        else if(other.tag == "Sword" && bloking == true)
+        {
+            SoundController.Instance.PlaySFX(SoundController.Instance.parryAtZan);
+        }
+
+        if(other.tag == "WayPoint")
+        {
+            changeWayPoint = true;
+            goIdle = true;
         }
     }
 

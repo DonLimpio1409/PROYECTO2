@@ -23,6 +23,8 @@ public class Combat : TemplateStateMachineEnemies
         _fsm.canPunchAgain = true;
         _fsm.bloking = true;
         _fsm.Shield.SetActive(true);
+
+        SoundController.Instance.footstepAudioSource.Stop();
     }
 
     public override void UpdateLogic()
@@ -85,8 +87,9 @@ public class Combat : TemplateStateMachineEnemies
     IEnumerator WaitToPunch()
     {
         yield return new WaitForSeconds(_fsm.timeToPunch);
-        if(_fsm.player.GetComponent<FSMPlayerManager>().blocking == false )
+        if(_fsm.player.GetComponent<FSMPlayerManager>().blocking == false)
         {
+            SoundController.Instance.PlaySFX(SoundController.Instance.getHitted);
             _fsm.img.GetComponent<Animator>().SetBool("Damage", true);
             _fsm.player.GetComponent<FSMPlayerManager>().hp -= 1;
             _fsm.player.GetComponent<Animator>().SetTrigger("Hit");
@@ -100,7 +103,8 @@ public class Combat : TemplateStateMachineEnemies
             _fsm.isStuned = true;
             _fsm.Shield.SetActive(false);
             _fsm.Stun.SetActive(true);
-            SoundController.Instance.PlaySFX(SoundController.Instance.DizzySound);
+            SoundController.Instance.PlaySFX(SoundController.Instance.dizzySound);
+            SoundController.Instance.PlaySFX(SoundController.Instance.parryAtEnemy);
             _fsm.StartCoroutine(Stuned());
         }  
     }

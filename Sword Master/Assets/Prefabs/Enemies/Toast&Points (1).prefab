@@ -1247,7 +1247,7 @@ MonoBehaviour:
   changeWayPoint: 0
   waypointData: {fileID: 11400000, guid: 3a3eb615371e6b0418722c4b665944ab, type: 2}
   walkSpeed: 1.5
-  chaseSpeed: 4
+  chaseSpeed: 5.5
   currentWayPointIndex: 0
   waitTimeR: 1
   waypoint1: {fileID: 1624007300517052636}
