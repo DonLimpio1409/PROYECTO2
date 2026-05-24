@@ -1826,7 +1826,7 @@ MonoBehaviour:
   img: {fileID: 0}
   rdn: 0
   hitProbably: 400
-  timeToPunch: 0.5
+  timeToPunch: 0.9
   isStuned: 0
 --- !u!54 &2865487977350751912
 Rigidbody:

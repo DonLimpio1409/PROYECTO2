@@ -8964,6 +8964,7 @@ GameObject:
   - component: {fileID: 8048891893774086930}
   - component: {fileID: 1007164812885249529}
   - component: {fileID: 4348416703006412070}
+  - component: {fileID: 8048891893774086931}
   m_Layer: 0
   m_Name: Casa.001
   m_TagString: Untagged
@@ -9524,13 +9525,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4920954075136026611}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.704937, y: 0.08757366, z: -0.695231, w: -0.109766185}
+  m_LocalRotation: {x: 0.50438744, y: -0.5068981, z: -0.52163064, w: 0.46534836}
   m_LocalPosition: {x: 22.396461, y: 4.6187263, z: -20.776815}
   m_LocalScale: {x: 0.7994946, y: 0.7994946, z: 0.7994946}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653406559836}
-  m_LocalEulerAnglesHint: {x: -1.89, y: -90.528, z: 163.964}
+  m_LocalEulerAnglesHint: {x: -3.405, y: -91.303, z: 266.956}
+--- !u!95 &8048891893774086931
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920954075136026611}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31bf2d374a1c5924cb3674d809765555, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8058512564013488133
 GameObject:
   m_ObjectHideFlags: 0
