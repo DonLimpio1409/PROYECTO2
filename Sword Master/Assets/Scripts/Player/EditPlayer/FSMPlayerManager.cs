@@ -51,7 +51,8 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public GameObject waypoint6;
     public GameObject waypoint7;
 
-     [Header("Die")]
+    [Header("lvlPass")]
+    public Animator endlvlMenu;
 
     [Header("Die")]
     public GameObject dieMenu;
@@ -81,8 +82,11 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
         if(other.gameObject.CompareTag("Destiny"))
         {
-            black.GetComponent<Animator>().SetBool("In", true);
-            StartCoroutine(PassScene());
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            endlvlMenu.SetBool("End", true);
+            SoundController.Instance.footstepAudioSource.Stop();
+            Time.timeScale = 0;
         }
     }
 
@@ -91,6 +95,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         if(other.gameObject.tag == "WayPointPlayer" && exit)
         {
             e++;
+            Destroy(other.gameObject);
             exit = false;
         }
     }
@@ -101,12 +106,5 @@ public class FSMPlayerManager : StateMachineFlowPlayer
         {
             exit = true;
         }
-    }
-
-    IEnumerator PassScene()
-    {
-        yield return new WaitForSeconds(1f);
-        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(activeSceneIndex + 1);
     }
 }

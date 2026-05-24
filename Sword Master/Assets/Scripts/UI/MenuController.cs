@@ -36,12 +36,13 @@ public class MenuController : MonoBehaviour
     {
         SoundController.Instance.PlaySFX(SoundController.Instance.buttonOut);
         SoundController.Instance.DecideFootstepSound();
-        StartCoroutine(WaitToGoDown());
         fondPause.SetActive(false);
         downPause.GetComponent<Animator>().SetBool("In", false);
         upPause.GetComponent<Animator>().SetBool("In", false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Time.timeScale = 1;
+        timesInMenu = 0;
     }
 
     void AperarMenuPausa()
@@ -50,25 +51,32 @@ public class MenuController : MonoBehaviour
         {
             SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
             SoundController.Instance.footstepAudioSource.Stop();
-            StartCoroutine(WaitToStopUp());
             fondPause.SetActive(true);
             upPause.GetComponent<Animator>().SetBool("In", true);
             downPause.GetComponent<Animator>().SetBool("In", true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            timesInMenu = 1;
+            Time.timeScale = 0;
         }
     }
 
-    IEnumerator WaitToStopUp()
-    {
-        timesInMenu = 1;
-        yield return new WaitForSeconds(0.85f);
-        Time.timeScale = 0;
-    }
-    IEnumerator WaitToGoDown()
+    public void Lvl1()
     {
         Time.timeScale = 1;
-        yield return new WaitForSeconds(0.85f);
-        timesInMenu = 0;
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
+        SceneManager.LoadScene("1 Tutorial");
+    }
+    public void Lvl2()
+    {
+        Time.timeScale = 1;
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
+        SceneManager.LoadScene("2 Level 1");
+    }
+    public void Lvl3()
+    {
+        Time.timeScale = 1; 
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
+        SceneManager.LoadScene("3 Level 2");
     }
 }
