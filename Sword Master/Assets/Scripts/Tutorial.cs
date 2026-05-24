@@ -68,7 +68,7 @@ public class Tutorial : MonoBehaviour
                 {
                     OnTutorial();
                 }
-                if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+                if(Input.GetKeyDown(KeyCode.Space) && trialEndTutorial)
                 {
                     tutorialDone = true;   
                 }

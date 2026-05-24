@@ -25,32 +25,55 @@ public class Walk : TemplateStateMachinePlayer
         IniciateWayPoints();
         EnemyDetected();
     }
-
-    public WayPointDataPlayer.WayPoint target;
     public void IniciateWayPoints()
     {
         _fsm.wayPointData.wayPointList.Clear();
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint1.transform.position.x, _fsm.waypoint1.transform.position.y, _fsm.waypoint1.transform.position.z));
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint2.transform.position.x, _fsm.waypoint2.transform.position.y, _fsm.waypoint2.transform.position.z));
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint3.transform.position.x, _fsm.waypoint3.transform.position.y, _fsm.waypoint3.transform.position.z));
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint4.transform.position.x, _fsm.waypoint4.transform.position.y, _fsm.waypoint4.transform.position.z));
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint5.transform.position.x, _fsm.waypoint5.transform.position.y, _fsm.waypoint5.transform.position.z));
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint6.transform.position.x, _fsm.waypoint6.transform.position.y, _fsm.waypoint6.transform.position.z));
-        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint7.transform.position.x, _fsm.waypoint7.transform.position.y, _fsm.waypoint7.transform.position.z));
 
-        target = _fsm.wayPointData.wayPointList[_fsm.e];
-    } 
+        GameObject[] waypoints = new GameObject[]
+        {
+            _fsm.waypoint1,
+            _fsm.waypoint2,
+            _fsm.waypoint3,
+            _fsm.waypoint4,
+            _fsm.waypoint5,
+            _fsm.waypoint6,
+            _fsm.waypoint7
+        };
+
+        foreach (GameObject wp in waypoints)
+        {
+            if (wp == null)
+            {
+                continue;
+            }
+
+            _fsm.wayPointData.AddWayPoint(wp.transform.position);
+        }
+
+        if (_fsm.wayPointData.wayPointList.Count == 0)
+            return;
+
+    }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        Vector3 direction = _fsm.wayPointData.wayPointList[_fsm.e].wayPointPosition - _fsm.transform.position;
+        if (_fsm.wayPointData.wayPointList.Count == 0)
+            return;
+
+        //if (_fsm.e < 0 || _fsm.e >= _fsm.wayPointData.wayPointList.Count)
+          //  return;
+
+        var wp = _fsm.wayPointData.wayPointList[0];
+
+        Vector3 direction = wp.wayPointPosition - _fsm.transform.position;
         Quaternion objective = Quaternion.LookRotation(direction);
 
         _fsm.transform.rotation = Quaternion.Lerp(_fsm.transform.rotation, objective, Time.deltaTime * 1f);
 
-        _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, _fsm.wayPointData.wayPointList[_fsm.e].wayPointPosition, _fsm.speed * Time.deltaTime);
+        _fsm.transform.position = Vector3.MoveTowards(_fsm.transform.position, wp.wayPointPosition, _fsm.speed * Time.deltaTime);
     }
+
 
     void EnemyDetected()
     {
