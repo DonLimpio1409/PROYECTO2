@@ -17,7 +17,9 @@ public class TutorialSta : TemplateStateMachinePlayer
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        if(_fsm.tutorialControl.GetComponent<Tutorial>().tutorialDone || _fsm.tutorialControl.GetComponent<Tutorial>().lvl1PresentationDone)
+        if(_fsm.tutorialControl.GetComponent<Tutorial>().tutorialDone || 
+        _fsm.tutorialControl.GetComponent<Tutorial>().lvl1PresentationDone || 
+        _fsm.tutorialControl.GetComponent<Tutorial>().lvl2PresentationDone)
         {
             _fsm.ChangeState(_fsm.walkState);
         }

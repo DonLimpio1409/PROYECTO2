@@ -46,6 +46,12 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public GameObject waypoint1;
     public GameObject waypoint2;
     public GameObject waypoint3;
+    public GameObject waypoint4;
+    public GameObject waypoint5;
+    public GameObject waypoint6;
+    public GameObject waypoint7;
+
+     [Header("Die")]
 
     [Header("Die")]
     public GameObject dieMenu;

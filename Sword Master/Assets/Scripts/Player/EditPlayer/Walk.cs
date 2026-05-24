@@ -33,6 +33,10 @@ public class Walk : TemplateStateMachinePlayer
         _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint1.transform.position.x, _fsm.waypoint1.transform.position.y, _fsm.waypoint1.transform.position.z));
         _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint2.transform.position.x, _fsm.waypoint2.transform.position.y, _fsm.waypoint2.transform.position.z));
         _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint3.transform.position.x, _fsm.waypoint3.transform.position.y, _fsm.waypoint3.transform.position.z));
+        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint4.transform.position.x, _fsm.waypoint4.transform.position.y, _fsm.waypoint4.transform.position.z));
+        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint5.transform.position.x, _fsm.waypoint5.transform.position.y, _fsm.waypoint5.transform.position.z));
+        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint6.transform.position.x, _fsm.waypoint6.transform.position.y, _fsm.waypoint6.transform.position.z));
+        _fsm.wayPointData.AddWayPoint(new Vector3(_fsm.waypoint7.transform.position.x, _fsm.waypoint7.transform.position.y, _fsm.waypoint7.transform.position.z));
 
         target = _fsm.wayPointData.wayPointList[_fsm.e];
     } 

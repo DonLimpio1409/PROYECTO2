@@ -1337,6 +1337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tutorial
   tutorialDone: 0
   lvl1PresentationDone: 0
+  lvl2PresentationDone: 0
   instruc1: {fileID: 975427511}
   instruc2: {fileID: 1567552032}
   instruc3: {fileID: 2106625001}
@@ -2125,6 +2126,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 96334191}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint4
+      value: 
+      objectReference: {fileID: 1631917482}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint5
+      value: 
+      objectReference: {fileID: 1631917481}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint6
+      value: 
+      objectReference: {fileID: 1631917480}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint7
+      value: 
+      objectReference: {fileID: 1631917479}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: tutorialControl
       value: 
       objectReference: {fileID: 1162633219}
@@ -2212,6 +2229,26 @@ PrefabInstance:
       addedObject: {fileID: 776429419}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+--- !u!1 &1631917479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2408008562401749727, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 1631917478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1631917480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7915738597038050876, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 1631917478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1631917481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7560876962973618926, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 1631917478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1631917482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8449028216257269340, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 1631917478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1646586022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4736879477282679036, guid: 93434720050d9154983c301d83e3133e, type: 3}

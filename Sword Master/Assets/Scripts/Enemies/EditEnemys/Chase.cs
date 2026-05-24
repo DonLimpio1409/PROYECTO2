@@ -43,9 +43,9 @@ public class Chase : TemplateStateMachineEnemies
 
         _fsm.currentAnimation = _fsm.anim.GetCurrentAnimatorStateInfo(0);
         //Se espera a que termine la animacion de sorpresa y lo persigue.
-        if(_fsm.currentAnimation.IsName("Surprise") && _fsm.currentAnimation.normalizedTime >= _fsm.AnimMargin)
+        if(_fsm.currentAnimation.IsName("Surprise"))
         {
-            _fsm.sen = true;
+            _fsm.StartCoroutine(WaitAnimationSurprise());
         }
         if (_fsm.sen)
         {
@@ -57,5 +57,10 @@ public class Chase : TemplateStateMachineEnemies
     {
         yield return new WaitForSeconds(1f);
         _fsm.Exclamation.SetActive(false);
+    }
+    IEnumerator WaitAnimationSurprise()
+    {
+        yield return new WaitForSeconds(_fsm.AnimMargin);
+        _fsm.sen = true;
     }
 }

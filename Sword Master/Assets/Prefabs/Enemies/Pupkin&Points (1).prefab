@@ -1644,7 +1644,7 @@ MonoBehaviour:
   upEnemy: 2
   rot: {fileID: 744412918213001915}
   sen: 0
-  AnimMargin: 0.9
+  AnimMargin: 0.5
   goIdle: 0
   changeWayPoint: 0
   waypointData: {fileID: 11400000, guid: b950c1a7fbc42e04885363a15f4e9e56, type: 2}

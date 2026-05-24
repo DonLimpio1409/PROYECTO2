@@ -1242,7 +1242,7 @@ MonoBehaviour:
   upEnemy: 3
   rot: {fileID: 182937342307973270}
   sen: 0
-  AnimMargin: 0.5
+  AnimMargin: 0.9
   goIdle: 0
   changeWayPoint: 0
   waypointData: {fileID: 11400000, guid: 3a3eb615371e6b0418722c4b665944ab, type: 2}

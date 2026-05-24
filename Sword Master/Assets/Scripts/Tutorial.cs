@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
 {
     public bool tutorialDone = false;
     public bool lvl1PresentationDone = false;
+    public bool lvl2PresentationDone = false;
 
     [Header("Instrucs Tutorial")]
     public GameObject instruc1;
@@ -50,6 +51,12 @@ public class Tutorial : MonoBehaviour
                 //SoundController.Instance.PlayMusic(SoundController.Instance.Level1Music);
                 StartCoroutine(WaitForScrollEndLevel1());
             break;
+
+            case "3 Level 2":
+                tutorialList.Enqueue(instruc1);
+                //SoundController.Instance.PlayMusic(SoundController.Instance.Level2Music);
+                StartCoroutine(WaitForScrollEndLevel2());
+            break;
         }
     }
     void Update()
@@ -89,6 +96,27 @@ public class Tutorial : MonoBehaviour
                 {
                     player.GetComponent<Animator>().SetBool("DoneLevel1", false);
                     lvl1PresentationDone = true;
+                }
+            break;
+
+            case "3 Level 2":
+                if(trialEndTutorial)
+                {
+                    OnTutorial();
+                }
+                if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+                {
+                    lvl2PresentationDone = true;   
+                }
+                if(lvl2PresentationDone && tutorialList.Count > 0)
+                {
+                    tutorialList.Peek().SetActive(false);
+                }
+
+                if(trialEndTutorial && Input.GetMouseButtonDown(0))
+                {
+                    player.GetComponent<Animator>().SetBool("DoneLevel2", false);
+                    lvl2PresentationDone = true;
                 }
             break;
         }
@@ -134,6 +162,13 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(1f);
         trialEndTutorial = true;
     }
+    public IEnumerator WaitAnimationLevel2()
+    {
+        yield return new WaitForSeconds(7.3f);
+        sword.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        trialEndTutorial = true;
+    }
 
     public IEnumerator WaitForScrollEndTutorial()
     {
@@ -148,5 +183,12 @@ public class Tutorial : MonoBehaviour
         black.GetComponent<Animator>().SetBool("Out", false);
         player.GetComponent<Animator>().SetBool("DoneLevel1", true);
         StartCoroutine(WaitAnimationLevel1());
+    }
+    public IEnumerator WaitForScrollEndLevel2()
+    {
+        yield return new WaitForSeconds(1.5f);
+        black.GetComponent<Animator>().SetBool("Out", false);
+        player.GetComponent<Animator>().SetBool("DoneLevel2", true);
+        StartCoroutine(WaitAnimationLevel2());
     }
 }

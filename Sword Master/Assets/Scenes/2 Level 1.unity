@@ -3091,6 +3091,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1355969177}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint4
+      value: 
+      objectReference: {fileID: 501716429}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint5
+      value: 
+      objectReference: {fileID: 501716428}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint6
+      value: 
+      objectReference: {fileID: 501716427}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: waypoint7
+      value: 
+      objectReference: {fileID: 501716426}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: tutorialControl
       value: 
       objectReference: {fileID: 565357916}
@@ -3188,6 +3204,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1970954496809154773, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
   m_PrefabInstance: {fileID: 501716424}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &501716426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2408008562401749727, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 501716424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &501716427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7915738597038050876, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 501716424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &501716428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7560876962973618926, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 501716424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &501716429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8449028216257269340, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 501716424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518427839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3260,6 +3296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tutorial
   tutorialDone: 0
   lvl1PresentationDone: 0
+  lvl2PresentationDone: 0
   instruc1: {fileID: 143246887}
   instruc2: {fileID: 0}
   instruc3: {fileID: 0}

@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: WayPointDataPlayer
   m_EditorClassIdentifier: Assembly-CSharp::WayPointDataPlayer
   wayPointList:
-  - wayPointPosition: {x: -35.563316, y: -7.481678, z: -67.71814}
-  - wayPointPosition: {x: -30.113823, y: -7.481678, z: -94.84538}
-  - wayPointPosition: {x: -30.379936, y: -7.481678, z: -210.60126}
+  - wayPointPosition: {x: 72.00116, y: 16.590975, z: -19.641266}
+  - wayPointPosition: {x: 46.178596, y: 14.090975, z: -10.291576}
+  - wayPointPosition: {x: 46.83563, y: 16.607975, z: -3.9742012}
+  - wayPointPosition: {x: 46.83563, y: 16.607975, z: -3.9742012}
+  - wayPointPosition: {x: 46.83563, y: 16.607975, z: -3.9742012}
+  - wayPointPosition: {x: 46.83563, y: 16.607975, z: -3.9742012}
+  - wayPointPosition: {x: 46.83563, y: 16.607975, z: -3.9742012}
