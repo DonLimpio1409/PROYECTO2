@@ -2203,6 +2203,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5763878954562765505}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: tempBlackDie
+      value: 
+      objectReference: {fileID: 5763878954562765506}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: tutorialControl
       value: 
       objectReference: {fileID: 1162633219}
@@ -2859,6 +2863,11 @@ GameObject:
 --- !u!95 &5763878954562765505 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8776377185539964292, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+  m_PrefabInstance: {fileID: 5763878954562765503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5763878954562765506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2051995218305722788, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
   m_PrefabInstance: {fileID: 5763878954562765503}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6102456134198441751

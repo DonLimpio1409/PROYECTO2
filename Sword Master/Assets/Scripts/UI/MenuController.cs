@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public GameObject pausaMenu;
-    public GameObject fondPause;    
+    public GameObject fondPause;
+    public GameObject tempBlackDie;
+    public Animator dieMenu;  
     public Animator upPause;
     public Animator downPause;
     int timesInMenu;
@@ -16,8 +18,10 @@ public class MenuController : MonoBehaviour
     public void ReStartLevel()
     {
         Time.timeScale = 1;
-        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(activeSceneIndex);
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
+        tempBlackDie.SetActive(true);
+        dieMenu.SetBool("ReStart", true);
+        StartCoroutine(WaitLoadScene());
     }
     public void ExitGame()
     {
@@ -78,5 +82,12 @@ public class MenuController : MonoBehaviour
         Time.timeScale = 1; 
         SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
         SceneManager.LoadScene("3 Level 2");
+    }
+    IEnumerator WaitLoadScene()
+    {
+        yield return new WaitForSeconds(1f);
+        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(activeSceneIndex);
+        tempBlackDie.SetActive(true);
     }
 }

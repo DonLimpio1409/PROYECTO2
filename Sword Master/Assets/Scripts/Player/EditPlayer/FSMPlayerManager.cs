@@ -56,6 +56,7 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
     [Header("Die")]
     public GameObject dieMenu;
+    public GameObject tempBlackDie;
     public Animator redDie;
 
     [Header("Fight")]

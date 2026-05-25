@@ -764,7 +764,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2958579072145837186, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5322792879384882642, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
       propertyPath: m_Pivot.x
@@ -1598,6 +1598,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &857846338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2051995218305722788, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+  m_PrefabInstance: {fileID: 357265840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919605618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,6 +3734,10 @@ PrefabInstance:
       propertyPath: endlvlMenu
       value: 
       objectReference: {fileID: 1247253881}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: tempBlackDie
+      value: 
+      objectReference: {fileID: 857846338}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: tutorialControl
       value: 

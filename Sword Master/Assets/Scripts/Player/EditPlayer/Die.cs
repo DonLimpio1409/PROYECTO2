@@ -18,16 +18,11 @@ public class Die : TemplateStateMachinePlayer
         SoundController.Instance.footstepAudioSource.clip = null;
         SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
         _fsm.redDie.SetBool("Die", true);
-        _fsm.StartCoroutine(StopTime());
+        _fsm.tempBlackDie.GetComponent<Animator>().SetBool("Die", true);
         _fsm.dieMenu.SetActive(true);
+        _fsm.tempBlackDie.SetActive(true);
         stateMachineFlow.ChangeState(((FSMPlayerManager)stateMachineFlow).tutorialState);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-    }
-
-    IEnumerator StopTime()
-    {
-        yield return new WaitForSeconds(2f);
-        Time.timeScale = 0;
     }
 }
