@@ -89,6 +89,7 @@ public class FSMEnemysManager : StateMachineFlowEnemies
     public int hitProbably = 2000;
     public float timeToPunch = 0.5f;
     public bool isStuned;
+    public float timeDoingNacing;
 
     public void OnTriggerEnter(Collider other)
     {

@@ -30,6 +30,7 @@ public class Combat : TemplateStateMachineEnemies
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        _fsm.timeDoingNacing += Time.deltaTime;
         _fsm.rdn = Random.Range(0, _fsm.hitProbably);
         if(_fsm.rdn == 0 && _fsm.canPunchAgain && !_fsm.isStuned)
         {
@@ -37,6 +38,13 @@ public class Combat : TemplateStateMachineEnemies
             _fsm.canPunchAgain = false;
             _fsm.StartCoroutine(WaitToPunchAgain());
 
+        }
+
+        if(_fsm.timeDoingNacing >= 3f && _fsm.canPunchAgain && !_fsm.isStuned)
+        {
+            Hit();
+            _fsm.canPunchAgain = false;
+            _fsm.StartCoroutine(WaitToPunchAgain());
         }
         Die();
     }
@@ -106,7 +114,7 @@ public class Combat : TemplateStateMachineEnemies
             SoundController.Instance.PlaySFX(SoundController.Instance.dizzySound);
             SoundController.Instance.PlaySFX(SoundController.Instance.parryAtEnemy);
             _fsm.StartCoroutine(Stuned());
-        }  
+        }
     }
 
     IEnumerator Stuned()
