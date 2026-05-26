@@ -764,7 +764,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2958579072145837186, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5322792879384882642, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
       propertyPath: m_Pivot.x
@@ -3696,7 +3696,7 @@ PrefabInstance:
       objectReference: {fileID: 357265843}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: speed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: redDie
