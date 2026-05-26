@@ -1267,7 +1267,7 @@ MonoBehaviour:
   bloking: 1
   img: {fileID: 0}
   rdn: 0
-  hitProbably: 300
+  hitProbably: 250
   timeToPunch: 1
   isStuned: 0
 --- !u!54 &2674592563397096468

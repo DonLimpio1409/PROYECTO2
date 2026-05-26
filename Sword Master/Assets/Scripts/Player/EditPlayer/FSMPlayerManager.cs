@@ -72,6 +72,9 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     public Sprite life2;
     public Sprite life3;
 
+    [Header("EndGame")]
+    public Animator endGameMenu;
+
     public void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Enemy"))
@@ -85,6 +88,15 @@ public class FSMPlayerManager : StateMachineFlowPlayer
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             endlvlMenu.SetBool("End", true);
+            SoundController.Instance.footstepAudioSource.Stop();
+            Time.timeScale = 0;
+        }
+
+        if(other.gameObject.CompareTag("EndGame"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            endGameMenu.SetBool("EndGame", true);
             SoundController.Instance.footstepAudioSource.Stop();
             Time.timeScale = 0;
         }

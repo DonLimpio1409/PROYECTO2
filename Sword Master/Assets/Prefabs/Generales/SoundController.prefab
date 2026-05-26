@@ -569,7 +569,6 @@ MonoBehaviour:
   musicAudioSource: {fileID: 1460941230126291219}
   footstepAudioSource: {fileID: 8294705570652719535}
   mexicanAudioSource: {fileID: 3385289189597868710}
-  ZanTalkAudioSource: {fileID: 918425756160011018}
   globalCooldown: 0.1
   TutorialMusic: {fileID: 8300000, guid: 12caad5d784b41840bc0ba4f5c27b0bb, type: 3}
   Level1Music: {fileID: 8300000, guid: f787c1cf9bb88d247b302358615cd702, type: 3}
@@ -634,7 +633,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

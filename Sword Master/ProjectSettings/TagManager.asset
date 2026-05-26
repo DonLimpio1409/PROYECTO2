@@ -10,6 +10,7 @@ TagManager:
   - VisionArea
   - Destiny
   - WayPointPlayer
+  - EndGame
   layers:
   - Default
   - TransparentFX
