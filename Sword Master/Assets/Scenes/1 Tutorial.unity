@@ -1405,6 +1405,7 @@ MonoBehaviour:
   black: {fileID: 5763878954562765504}
   player: {fileID: 1839278202}
   sword: {fileID: 565017270}
+  zanTalkAudioSource: {fileID: 6345760936387522771}
 --- !u!65 &1162633222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2314,6 +2315,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8449028216257269340, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
   m_PrefabInstance: {fileID: 1631917478}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1631917483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8791547229528565164, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+  m_PrefabInstance: {fileID: 1631917478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1646586022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4736879477282679036, guid: 93434720050d9154983c301d83e3133e, type: 3}
@@ -2626,7 +2632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1688923872238448312}
   m_Layer: 0
-  m_Name: SuarezM_PII_HarvestHero_Texturizado_Lobby
+  m_Name: Casa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3006,9 +3012,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 113714486}
     - target: {fileID: 510789693491080920, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1631917483}
+    - target: {fileID: 510789693491080920, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
       propertyPath: musicAudioSource
       value: 
       objectReference: {fileID: 1647748730}
+    - target: {fileID: 918425756160011018, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -6573360034410788543, guid: 5dcdb7af9fe4a22319619b051d1bdcbb, type: 2}
     - target: {fileID: 1460941230126291219, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -3090,6 +3104,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+--- !u!1 &6345760936387522771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9043378299300667863, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+  m_PrefabInstance: {fileID: 6345760936387522770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7210068952236182938
 PrefabInstance:
   m_ObjectHideFlags: 0

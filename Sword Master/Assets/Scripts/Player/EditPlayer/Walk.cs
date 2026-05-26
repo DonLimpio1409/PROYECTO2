@@ -12,8 +12,7 @@ public class Walk : TemplateStateMachinePlayer
 
     public override void Enter()
     {
-        base.Enter();
-        _fsm.exit = true;  
+        base.Enter();  
         _fsm.anim.SetBool("Walk", true);
         _fsm.enemyBlock = false;
         SoundController.Instance.DecideFootstepSound();
@@ -60,10 +59,7 @@ public class Walk : TemplateStateMachinePlayer
         base.UpdatePhysics();
         if (_fsm.wayPointData.wayPointList.Count == 0)
             return;
-
-        //if (_fsm.e < 0 || _fsm.e >= _fsm.wayPointData.wayPointList.Count)
-          //  return;
-
+            
         var wp = _fsm.wayPointData.wayPointList[0];
 
         Vector3 direction = wp.wayPointPosition - _fsm.transform.position;
