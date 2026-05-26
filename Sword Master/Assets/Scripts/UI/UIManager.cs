@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
         SoundController.Instance.PlayMusic(SoundController.Instance.Level1Music);
         PushMenu(mainMenu);
         StartCoroutine(WaitToTransition());
+        Time.timeScale = 1f;
     }
 
     public void PushMenu(GameObject nextMenu)
@@ -73,17 +74,18 @@ public class UIManager : MonoBehaviour
     IEnumerator WaitTransition()
     {
         Debug.Log("Culo limpio");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Culo sucio");
-        black.GetComponent<Animator>().SetBool("In", false);
         DOTween.KillAll();
+        yield return new WaitForSeconds(1.3f);
+        Debug.Log("Culo sucio");
         SceneManager.LoadScene(2);
     }
 
     public IEnumerator WaitToTransition()
     {
         black.GetComponent<Animator>().SetBool("Out", true);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.3f);
         tempBlack.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        black.GetComponent<Animator>().SetBool("Out", false);
     }
 }
