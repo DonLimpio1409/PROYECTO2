@@ -23,6 +23,7 @@ public class Tutorial : MonoBehaviour
     public GameObject black;
     public GameObject player;
     public GameObject sword;
+    public GameObject zanTalkAudioSource;
 
     void Awake()
     {
@@ -48,13 +49,13 @@ public class Tutorial : MonoBehaviour
 
             case "2 Level 1":
                 tutorialList.Enqueue(instruc1);
-                //SoundController.Instance.PlayMusic(SoundController.Instance.Level1Music);
+                SoundController.Instance.PlayMusic(SoundController.Instance.Level1Music);
                 StartCoroutine(WaitForScrollEndLevel1());
             break;
 
             case "3 Level 2":
                 tutorialList.Enqueue(instruc1);
-                //SoundController.Instance.PlayMusic(SoundController.Instance.Level2Music);
+                SoundController.Instance.PlayMusic(SoundController.Instance.Level2Music);
                 StartCoroutine(WaitForScrollEndLevel2());
             break;
         }
@@ -120,10 +121,16 @@ public class Tutorial : MonoBehaviour
                 }
             break;
         }
+
+        if(tutorialDone)
+        {
+            zanTalkAudioSource.SetActive(false);
+        }
     }
 
     void OnTutorial()
     {
+        zanTalkAudioSource.SetActive(true);
         if (tutorialList.Count > 0 && !tutorialList.Peek().activeSelf)
         {
             tutorialList.Peek().SetActive(true);

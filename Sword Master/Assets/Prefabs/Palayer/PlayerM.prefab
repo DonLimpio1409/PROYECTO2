@@ -956,6 +956,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6435549821075410202}
     - target: {fileID: 3956056601784882450, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: waypoint4
+      value: 
+      objectReference: {fileID: 8449028216257269340}
+    - target: {fileID: 3956056601784882450, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: waypoint5
+      value: 
+      objectReference: {fileID: 7560876962973618926}
+    - target: {fileID: 3956056601784882450, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: waypoint6
+      value: 
+      objectReference: {fileID: 7915738597038050876}
+    - target: {fileID: 3956056601784882450, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
+      propertyPath: waypoint7
+      value: 
+      objectReference: {fileID: 2408008562401749727}
+    - target: {fileID: 3956056601784882450, guid: e4e73b81b730c404db29ffbb11cb3360, type: 3}
       propertyPath: wayPointData
       value: 
       objectReference: {fileID: 11400000, guid: e9ff6e2fb89bad248b136133e825fd5b, type: 2}

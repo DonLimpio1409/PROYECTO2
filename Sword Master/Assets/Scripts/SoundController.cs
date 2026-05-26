@@ -11,6 +11,7 @@ public class SoundController : MonoBehaviour
     public AudioSource SFXAudioSource;
     public AudioSource musicAudioSource;
     public AudioSource footstepAudioSource;
+    public AudioSource mexicanAudioSource;
 
     // Cooldown general para evitar spam
     public float globalCooldown = 0.05f;
@@ -20,6 +21,8 @@ public class SoundController : MonoBehaviour
 
     [Header("Music")]
     public AudioClip TutorialMusic;
+    public AudioClip Level1Music;
+    public AudioClip Level2Music;
 
     [Header("SFX")]
     public AudioClip swingSound;
@@ -34,9 +37,42 @@ public class SoundController : MonoBehaviour
     public AudioClip getHitted;
     public AudioClip hitEnemy;
 
+    [Header("Utiles")]
+    private float originalMusicVolume;
+    public float fadeSpeed = 2f; 
+    public Transform cameraTransform;
+
+
     void Awake()
     {
         Instance = this;
+        originalMusicVolume = musicAudioSource.volume;
+    }
+
+    void Update()
+    {
+        float distance = Vector3.Distance(cameraTransform.position, mexicanAudioSource.transform.position);
+
+        bool playerHearsMexicanMusic = distance <= mexicanAudioSource.maxDistance;
+
+        if (playerHearsMexicanMusic)
+        {
+            // Fade out de la música global
+            musicAudioSource.volume = Mathf.Lerp(
+                musicAudioSource.volume,
+                0f,
+                Time.deltaTime * fadeSpeed
+            );
+        }
+        else
+        {
+            // Fade in cuando el jugador sale del área
+            musicAudioSource.volume = Mathf.Lerp(
+                musicAudioSource.volume,
+                originalMusicVolume,
+                Time.deltaTime * fadeSpeed
+            );
+        }
     }
 
     public void PlaySFX(AudioClip clip)

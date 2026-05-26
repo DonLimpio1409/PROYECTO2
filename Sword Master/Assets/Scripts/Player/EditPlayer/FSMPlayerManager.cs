@@ -41,7 +41,6 @@ public class FSMPlayerManager : StateMachineFlowPlayer
     [Header("Walk")]
     public float speed = 1f;
     public bool enemyBlock;
-    public bool exit = true;
     public int e = 0;
     public GameObject waypoint1;
     public GameObject waypoint2;
@@ -93,19 +92,11 @@ public class FSMPlayerManager : StateMachineFlowPlayer
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "WayPointPlayer" && exit)
-        {
-            e++;
-            Destroy(other.gameObject);
-            exit = false;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
         if(other.gameObject.tag == "WayPointPlayer")
         {
-            exit = true;
+            Debug.Log("WayPointPlayer");
+            e++;
+            Destroy(other.gameObject);
         }
     }
 }
