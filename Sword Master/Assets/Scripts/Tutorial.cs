@@ -84,7 +84,7 @@ public class Tutorial : MonoBehaviour
                 {
                     OnTutorial();
                 }
-                if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+                if(Input.GetMouseButtonDown(0) && trialEndTutorial)
                 {
                     lvl1PresentationDone = true;   
                 }
@@ -105,7 +105,7 @@ public class Tutorial : MonoBehaviour
                 {
                     OnTutorial();
                 }
-                if(Input.GetMouseButtonDown(1) && trialEndTutorial)
+                if(Input.GetMouseButtonDown(0) && trialEndTutorial)
                 {
                     lvl2PresentationDone = true;   
                 }

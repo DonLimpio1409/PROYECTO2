@@ -10,7 +10,7 @@ public class MenuController : MonoBehaviour
     public Animator dieMenu;  
     public Animator upPause;
     public Animator downPause;
-    int timesInMenu;
+    public int timesInMenu;
     void Update()
     {
         AperarMenuPausa();
@@ -45,8 +45,7 @@ public class MenuController : MonoBehaviour
         upPause.GetComponent<Animator>().SetBool("In", false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Time.timeScale = 1;
-        timesInMenu = 0;
+        StartCoroutine(WaitToTurnBack());
     }
 
     void AperarMenuPausa()
@@ -60,8 +59,8 @@ public class MenuController : MonoBehaviour
             downPause.GetComponent<Animator>().SetBool("In", true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            timesInMenu = 1;
             Time.timeScale = 0;
+            timesInMenu = 1;
         }
     }
 
@@ -89,5 +88,11 @@ public class MenuController : MonoBehaviour
         int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneIndex);
         tempBlackDie.SetActive(true);
+    }
+    IEnumerator WaitToTurnBack()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1;
+        timesInMenu = 0;
     }
 }
