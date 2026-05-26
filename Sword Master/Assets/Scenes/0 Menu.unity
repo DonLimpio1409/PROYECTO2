@@ -554,6 +554,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206170022}
   m_CullTransparentMesh: 1
+--- !u!1001 &210159645
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 510789693491080920, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1358005602}
+    - target: {fileID: 1460941230126291219, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7129879007134704007, guid: 5dcdb7af9fe4a22319619b051d1bdcbb, type: 2}
+    - target: {fileID: 5983767433267091018, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -51.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983767433267091018, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 71.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238542756101686842, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -6573360034410788543, guid: 5dcdb7af9fe4a22319619b051d1bdcbb, type: 2}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -51.04663
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.07074
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743720826448084876, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495988118957409052, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+      propertyPath: m_Name
+      value: SoundController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 9043378299300667863, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 086c9736ca759dc4690a353967d00de9, type: 3}
 --- !u!1 &229381661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,6 +5232,7 @@ GameObject:
   - component: {fileID: 1358005601}
   - component: {fileID: 1358005600}
   - component: {fileID: 1358005603}
+  - component: {fileID: 1358005604}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -5287,6 +5366,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   m_MaxRayIntersections: 0
+--- !u!81 &1358005604
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358005599}
+  m_Enabled: 1
 --- !u!1 &1374435287
 GameObject:
   m_ObjectHideFlags: 0
@@ -10439,3 +10526,4 @@ SceneRoots:
   - {fileID: 422348210}
   - {fileID: 543450653406559836}
   - {fileID: 296278648}
+  - {fileID: 210159645}

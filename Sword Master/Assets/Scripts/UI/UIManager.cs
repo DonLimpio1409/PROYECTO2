@@ -15,12 +15,14 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
+        SoundController.Instance.PlayMusic(SoundController.Instance.Level1Music);
         PushMenu(mainMenu);
         StartCoroutine(WaitToTransition());
     }
 
     public void PushMenu(GameObject nextMenu)
     {
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
         if (nextMenu == null) return;
 
         if (menuStack.Count > 0 && menuStack.Peek() == nextMenu) return;
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void PopMenu()
     {
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonOut);
         if (menuStack.Count <= 1) return;
 
         GameObject current = menuStack.Pop();
@@ -46,6 +49,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenSubMenu(GameObject subMenuToOpen)
     {
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
         foreach (GameObject subMenu in settingsSubMenus)
         {
             subMenu.SetActive(false);
@@ -58,10 +62,12 @@ public class UIManager : MonoBehaviour
         StopCoroutine(WaitTransition());
         black.GetComponent<Animator>().SetBool("In", true);
         StartCoroutine(WaitTransition());
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
     }
 
     public void Quit()
     {
+        SoundController.Instance.PlaySFX(SoundController.Instance.buttonIn);
         Application.Quit();
     }
     IEnumerator WaitTransition()
