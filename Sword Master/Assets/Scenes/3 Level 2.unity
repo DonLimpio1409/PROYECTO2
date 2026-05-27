@@ -773,7 +773,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Esta ser\xE1 tu <color=red>\xFAltima misi\xF3n<color=black> concentrate
-    porque esta es la m\xE1s dificil con diferencia."
+    porque esta es la m\xE1s dif\xEDcil con diferencia."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afe99de4bf18a69448bb65d1d9d9cdab, type: 2}
   m_sharedMaterial: {fileID: 2090613480071670456, guid: afe99de4bf18a69448bb65d1d9d9cdab, type: 2}

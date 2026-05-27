@@ -1797,7 +1797,7 @@ MonoBehaviour:
   stateName: {fileID: 0}
   rb: {fileID: 2865487977350751912}
   anim: {fileID: 9167691320203725219}
-  upEnemy: 3
+  upEnemy: 4
   rot: {fileID: 1083454748305899591}
   sen: 0
   AnimMargin: 1.5
@@ -1828,6 +1828,7 @@ MonoBehaviour:
   hitProbably: 250
   timeToPunch: 0.6
   isStuned: 0
+  timeDoingNacing: 0
 --- !u!54 &2865487977350751912
 Rigidbody:
   m_ObjectHideFlags: 0
