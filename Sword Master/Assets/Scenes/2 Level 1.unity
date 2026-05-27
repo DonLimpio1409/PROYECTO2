@@ -3020,6 +3020,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2916452797865139070, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: Shield
+      value: 
+      objectReference: {fileID: 705818963}
+    - target: {fileID: 2916452797865139070, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: blueScreen
       value: 
       objectReference: {fileID: 771690124}
@@ -3721,6 +3725,11 @@ PrefabInstance:
       addedObject: {fileID: 143246888}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+--- !u!1 &705818963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2491515163047488347, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+  m_PrefabInstance: {fileID: 705818962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &710923366
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -298,6 +298,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93434720050d9154983c301d83e3133e, type: 3}
+--- !u!1 &383590782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2491515163047488347, guid: acf6409ccdf0f034ea3be2462b8b3fbe, type: 3}
+  m_PrefabInstance: {fileID: 5763878954562765503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &423762208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4736879477282679036, guid: 93434720050d9154983c301d83e3133e, type: 3}
@@ -2055,6 +2060,10 @@ PrefabInstance:
       propertyPath: maxUp
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2916452797865139070, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: Shield
+      value: 
+      objectReference: {fileID: 383590782}
     - target: {fileID: 2916452797865139070, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: maxLeft
       value: 100

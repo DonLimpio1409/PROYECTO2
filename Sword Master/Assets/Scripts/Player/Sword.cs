@@ -22,6 +22,7 @@ public class Sword : MonoBehaviour
     public bool blocking = false;
     public float blocktime = 0f;
     public float cooldonwBlock = 2f;
+    public GameObject Shield;
 
     // Cooldown para evitar swing tras bloquear
     private float swingLockTimer = 0f;
@@ -90,7 +91,8 @@ public class Sword : MonoBehaviour
         {
             blocking = true;
             blueScreen.SetBool("Bloking", true);
-            cooldonwBlock = 1f; 
+            cooldonwBlock = 1f;
+            Shield.SetActive(true);
         }
         
         if (blocking)
@@ -103,6 +105,7 @@ public class Sword : MonoBehaviour
                 blocking = false;
                 blocktime = 0f;
                 cooldonwBlock = 1f;
+                Shield.SetActive(false);
 
                 // ACTIVAR COOLDOWN DE SWING
                 swingLockTimer = 0.2f;
