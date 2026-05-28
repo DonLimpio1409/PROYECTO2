@@ -1049,6 +1049,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 357265843}
     - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: life1
+      value: 
+      objectReference: {fileID: 1590237639, guid: 7c666dee4ce8d0d459a126c58da491e4, type: 3}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
+      propertyPath: life3
+      value: 
+      objectReference: {fileID: 1124839856, guid: 7c666dee4ce8d0d459a126c58da491e4, type: 3}
+    - target: {fileID: 6322010909660005299, guid: 735f604ff8dfc3c43a33ed746baf6d2f, type: 3}
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}

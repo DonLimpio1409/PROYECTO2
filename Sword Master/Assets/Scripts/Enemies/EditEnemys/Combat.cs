@@ -45,6 +45,11 @@ public class Combat : TemplateStateMachineEnemies
             Hit();
             _fsm.canPunchAgain = false;
             _fsm.StartCoroutine(WaitToPunchAgain());
+            _fsm.timeDoingNacing = 0f;
+        }
+        else if(_fsm.timeDoingNacing >= 3f)        
+        {
+            _fsm.timeDoingNacing = 0f;
         }
         Die();
     }
