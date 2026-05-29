@@ -24,10 +24,7 @@ public class Sword : MonoBehaviour
     public float cooldonwBlock = 2f;
     public GameObject Shield;
 
-    // Cooldown para evitar swing tras bloquear
     private float swingLockTimer = 0f;
-
-    // ---------------- SWING RÁPIDO ----------------
     private Quaternion lastRotation;
     private float angularSpeed;
 
@@ -83,8 +80,6 @@ public class Sword : MonoBehaviour
         UpdateSword();
     }
 
-    // ---------------- BLOQUEO ----------------
-
     void CheckBlock()
     {
         if (Input.GetMouseButton(1) && cooldonwBlock <= 0f)
@@ -107,7 +102,6 @@ public class Sword : MonoBehaviour
                 cooldonwBlock = 1f;
                 Shield.SetActive(false);
 
-                // ACTIVAR COOLDOWN DE SWING
                 swingLockTimer = 0.2f;
             }
         }
@@ -118,8 +112,6 @@ public class Sword : MonoBehaviour
         }
     }
 
-    // ---------------- MANO ----------------
-
     void UpdateHand()
     {
         if (blocking)
@@ -129,13 +121,12 @@ public class Sword : MonoBehaviour
             return;
         }
 
-        // Sway
+
         Vector3 sway = new Vector3(mouseDelta.x, mouseDelta.y, 0) * swayAmount;
         Vector3 targetPos = initialHandPos + sway;
 
         Hand.localPosition = Vector3.Lerp(Hand.localPosition, targetPos, Time.deltaTime * swaySmooth);
 
-        // Rotación corregida
         float yaw = Hand.parent.rotation.eulerAngles.y;
 
         Quaternion playerYaw = Quaternion.Euler(0, yaw, 0);
@@ -143,8 +134,6 @@ public class Sword : MonoBehaviour
 
         Hand.rotation = Quaternion.Slerp(Hand.rotation, playerYaw * handPitchYaw, Time.deltaTime * handSmooth);
     }
-
-    // ---------------- ESPADA ----------------
 
     void UpdateSword()
     {
@@ -158,14 +147,13 @@ public class Sword : MonoBehaviour
             return;
         }
 
-        // Movimiento normal estilo Wii Sports Resort
         swordTargetRot = Hand.rotation;
 
         Quaternion corrected = swordTargetRot * Quaternion.Euler(0, 0, 90);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, corrected, Time.deltaTime / swordDelay);
 
-        // Cálculo de velocidad angular
+
         Quaternion delta = transform.rotation * Quaternion.Inverse(lastRotation);
 
         delta.ToAngleAxis(out float angle, out Vector3 axis);
@@ -176,7 +164,7 @@ public class Sword : MonoBehaviour
 
         lastRotation = transform.rotation;
 
-        // EXTENSIÓN POR SWING RÁPIDO
+
         Vector3 forwardLocal = transform.parent.InverseTransformDirection(Hand.parent.forward);
 
         if (swingLockTimer <= 0f && angularSpeed > fastSwingThreshold)
@@ -201,8 +189,6 @@ public class Sword : MonoBehaviour
             trail.SetActive(false);
         }
     }
-
-    // ---------------- CALIBRACIÓN ----------------
 
     void CheckCalibration()
     {
